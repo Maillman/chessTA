@@ -1,0 +1,80 @@
+package webSocketMessages.serverMessages;
+
+import Model.Game;
+import com.google.gson.Gson;
+
+import java.util.Objects;
+
+/**
+ * Represents a Message the server can send through a WebSocket
+ * 
+ * Note: You can add to this class, but you should not alter the existing
+ * methods.
+ */
+public class ServerMessage {
+    ServerMessageType serverMessageType;
+
+    String message;
+
+    Game game;
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void addErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
+
+    String errorMessage;
+
+    public void addGame(Game game) {
+        this.game = game;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public enum ServerMessageType {
+        LOAD_GAME,
+        ERROR,
+        NOTIFICATION
+    }
+
+    public ServerMessage(ServerMessageType type) {
+        this.serverMessageType = type;
+    }
+
+    public ServerMessageType getServerMessageType() {
+        return this.serverMessageType;
+    }
+
+    public void addMessage(String message){
+        this.message = message;
+    }
+
+    public String getMessage(){
+        return message;
+    }
+
+    @Override
+    public String toString() {
+        return new Gson().toJson(this);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (!(o instanceof ServerMessage))
+            return false;
+        ServerMessage that = (ServerMessage) o;
+        return getServerMessageType() == that.getServerMessageType();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getServerMessageType());
+    }
+}
