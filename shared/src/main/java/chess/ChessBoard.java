@@ -1,5 +1,7 @@
 package chess;
 
+import java.util.Arrays;
+
 /**
  * A chessboard that can hold and rearrange chess pieces.
  * <p>
@@ -7,11 +9,72 @@ package chess;
  * signature of the existing methods.
  */
 public class ChessBoard {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ChessBoard that)) return false;
+        return Arrays.deepEquals(squares, that.squares);
+    }
 
+    @Override
+    public int hashCode() {
+        return Arrays.deepHashCode(squares);
+    }
+
+    @Override
+    public String toString() {
+        return "ChessBoard{" +
+                "squares=" + Arrays.deepToString(squares) +
+                '}';
+    }
+
+    private ChessPiece[][] squares = new ChessPiece[8][8];
+
+    public boolean isCastleQueenSideW() {
+        return castleQueenSideW;
+    }
+
+    public void setCastleQueenSideW(boolean castleQueenSideW) {
+        this.castleQueenSideW = castleQueenSideW;
+    }
+
+    public boolean isCastleKingSideW() {
+        return castleKingSideW;
+    }
+
+    public void setCastleKingSideW(boolean castleKingSideW) {
+        this.castleKingSideW = castleKingSideW;
+    }
+
+    public boolean isCastleQueenSideB() {
+        return castleQueenSideB;
+    }
+
+    public void setCastleQueenSideB(boolean castleQueenSideB) {
+        this.castleQueenSideB = castleQueenSideB;
+    }
+
+    public boolean isCastleKingSideB() {
+        return castleKingSideB;
+    }
+
+    public void setCastleKingSideB(boolean castleKingSideB) {
+        this.castleKingSideB = castleKingSideB;
+    }
+
+    boolean castleQueenSideW = true, castleKingSideW = true;
+    boolean castleQueenSideB = true, castleKingSideB = true;
     public ChessBoard() {
         
     }
 
+    public ChessBoard(ChessBoard board){
+        for(int i = 0; i < 8; i++) {
+            for(int j = 0; j < 8; j++) {
+                squares[i][j] = board.squares[i][j];
+            }
+        }
+    }
     /**
      * Adds a chess piece to the chessboard
      *
@@ -19,7 +82,7 @@ public class ChessBoard {
      * @param piece    the piece to add
      */
     public void addPiece(ChessPosition position, ChessPiece piece) {
-        throw new RuntimeException("Not implemented");
+        squares[position.getRow()-1][position.getColumn()-1] = piece;
     }
 
     /**
@@ -30,7 +93,7 @@ public class ChessBoard {
      * position
      */
     public ChessPiece getPiece(ChessPosition position) {
-        throw new RuntimeException("Not implemented");
+        return squares[position.getRow()-1][position.getColumn()-1];
     }
 
     /**
@@ -38,6 +101,41 @@ public class ChessBoard {
      * (How the game of chess normally starts)
      */
     public void resetBoard() {
-        throw new RuntimeException("Not implemented");
+        ChessGame.TeamColor color = ChessGame.TeamColor.WHITE;
+        int rank = 0;
+        //White-Side
+        squares[rank][0] = new ChessPiece(color, ChessPiece.PieceType.ROOK);
+        squares[rank][7] = new ChessPiece(color, ChessPiece.PieceType.ROOK);
+        squares[rank][1] = new ChessPiece(color, ChessPiece.PieceType.KNIGHT);
+        squares[rank][6] = new ChessPiece(color, ChessPiece.PieceType.KNIGHT);
+        squares[rank][2] = new ChessPiece(color, ChessPiece.PieceType.BISHOP);
+        squares[rank][5] = new ChessPiece(color, ChessPiece.PieceType.BISHOP);
+        squares[rank][3] = new ChessPiece(color, ChessPiece.PieceType.QUEEN);
+        squares[rank][4] = new ChessPiece(color, ChessPiece.PieceType.KING);
+        rank++;
+        for (int i = 0; i < 8; i++) {
+            squares[rank][i] = new ChessPiece(color, ChessPiece.PieceType.PAWN);
+        }
+        //Black-Side
+        color = ChessGame.TeamColor.BLACK;
+        rank = 7;
+        squares[rank][0] = new ChessPiece(color, ChessPiece.PieceType.ROOK);
+        squares[rank][7] = new ChessPiece(color, ChessPiece.PieceType.ROOK);
+        squares[rank][1] = new ChessPiece(color, ChessPiece.PieceType.KNIGHT);
+        squares[rank][6] = new ChessPiece(color, ChessPiece.PieceType.KNIGHT);
+        squares[rank][2] = new ChessPiece(color, ChessPiece.PieceType.BISHOP);
+        squares[rank][5] = new ChessPiece(color, ChessPiece.PieceType.BISHOP);
+        squares[rank][3] = new ChessPiece(color, ChessPiece.PieceType.QUEEN);
+        squares[rank][4] = new ChessPiece(color, ChessPiece.PieceType.KING);
+        rank--;
+        for (int i = 0; i < 8; i++) {
+            squares[rank][i] = new ChessPiece(color, ChessPiece.PieceType.PAWN);
+        }
+        castleKingSideW = true;
+        castleQueenSideW = true;
+        castleKingSideB = true;
+        castleQueenSideB = true;
+
     }
+
 }
