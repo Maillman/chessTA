@@ -1,7 +1,7 @@
 package service;
 
 import Model.User;
-import dataAccess.DataAccessException;
+import dataaccess.DataAccessException;
 import org.junit.jupiter.api.*;
 
 @SuppressWarnings("unused")

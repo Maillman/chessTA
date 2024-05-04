@@ -4,7 +4,7 @@ import Model.Auth;
 import Model.Join;
 import Model.Game;
 import chess.ChessGame;
-import dataAccess.*;
+import dataaccess.*;
 
 import java.util.List;
 import java.util.Objects;

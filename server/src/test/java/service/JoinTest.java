@@ -4,7 +4,7 @@ import Model.Auth;
 import Model.Join;
 import Model.Game;
 import chess.ChessGame;
-import dataAccess.DataAccessException;
+import dataaccess.DataAccessException;
 import org.junit.jupiter.api.*;
 import org.mindrot.jbcrypt.BCrypt;
 

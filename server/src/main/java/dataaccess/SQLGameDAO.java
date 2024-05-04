@@ -1,4 +1,4 @@
-package dataAccess;
+package dataaccess;
 
 import Model.Game;
 
@@ -8,11 +8,9 @@ import com.google.gson.Gson;
 import java.util.List;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.sql.*;
 
 import static java.sql.Statement.RETURN_GENERATED_KEYS;
-import static java.sql.Types.NULL;
 
 public class SQLGameDAO implements GameDAO{
     public SQLGameDAO(){

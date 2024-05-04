@@ -2,7 +2,7 @@ package server;
 
 import Model.*;
 import com.google.gson.Gson;
-import dataAccess.*;
+import dataaccess.*;
 //import server.WebSocket.WebSocketHandler;
 import service.*;
 import spark.*;
@@ -14,9 +14,9 @@ public class Server {
     private final GameService gameService;
     public Server(){
         //MemoryDAO
-        UserDAO userDAO = new MemoryUserDAO();
-        AuthDAO authDAO = new MemoryAuthDAO();
-        GameDAO gameDAO = new MemoryGameDAO();
+        UserDAO userDAO = new SQLUserDAO();
+        AuthDAO authDAO = new SQLAuthDAO();
+        GameDAO gameDAO = new SQLGameDAO();
         userService = new UserService(userDAO, authDAO);
         clearService = new ClearService(userDAO, authDAO, gameDAO);
         gameService = new GameService(authDAO, gameDAO);

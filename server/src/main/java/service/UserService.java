@@ -2,10 +2,9 @@ package service;
 
 import Model.Auth;
 import Model.User;
-import dataAccess.*;
+import dataaccess.*;
 import org.mindrot.jbcrypt.BCrypt;
 
-import java.util.Objects;
 import java.util.UUID;
 
 

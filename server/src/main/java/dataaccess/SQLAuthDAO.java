@@ -1,16 +1,10 @@
-package dataAccess;
-
-import Model.User;
-import com.google.gson.Gson;
+package dataaccess;
 
 import Model.Auth;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.sql.*;
 
 import static java.sql.Statement.RETURN_GENERATED_KEYS;
-import static java.sql.Types.NULL;
 
 public class SQLAuthDAO implements AuthDAO{
     public SQLAuthDAO(){

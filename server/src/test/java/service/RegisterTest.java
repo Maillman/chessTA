@@ -1,7 +1,7 @@
 package service;
 
 import Model.Auth;
-import dataAccess.DataAccessException;
+import dataaccess.DataAccessException;
 import org.junit.jupiter.api.*;
 import org.mindrot.jbcrypt.BCrypt;
 
