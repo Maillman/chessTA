@@ -34,8 +34,8 @@ public class GameService {
             }
             Game foundGame = gameDAO.getGame(join.getGameID());
             if(foundGame!=null&&join.getPlayerColor()!=null){
-                if(     ((Objects.equals(join.getPlayerColor(), "WHITE") && ((Objects.equals(foundGame.getWhiteUsername(), ""))||foundGame.getWhiteUsername()==null))) ||
-                        ((Objects.equals(join.getPlayerColor(), "BLACK") && ((Objects.equals(foundGame.getBlackUsername(), ""))||foundGame.getBlackUsername()==null))) ||
+                if(     ((Objects.equals(join.getPlayerColor(), "WHITE") && ((Objects.equals(foundGame.getWhiteUsername(), ""))||(foundGame.getWhiteUsername()==null)|| Objects.equals(foundGame.getWhiteUsername(), auth.getUsername())))) ||
+                        ((Objects.equals(join.getPlayerColor(), "BLACK") && ((Objects.equals(foundGame.getBlackUsername(), ""))||(foundGame.getBlackUsername()==null)|| Objects.equals(foundGame.getWhiteUsername(), auth.getUsername())))) ||
                         ((!Objects.equals(join.getPlayerColor(),"WHITE") && !Objects.equals(join.getPlayerColor(),"BLACK")))){
                     return gameDAO.updateGame(auth.getUsername(),foundGame.getGameID(),join.getPlayerColor(),foundGame);
                 }else{
