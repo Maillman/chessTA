@@ -1,13 +1,10 @@
 package client2server;
 
 import com.google.gson.Gson;
-import webSocketMessages.serverMessages.ServerMessage;
-import webSocketMessages.userCommands.UserGameCommand;
+import websocket.messages.ServerMessage;
 
 import javax.websocket.*;
-import java.io.IOException;
 import java.net.URI;
-import java.net.URISyntaxException;
 
 public class WebSocketCommunicator extends Endpoint {
 
@@ -16,7 +13,7 @@ public class WebSocketCommunicator extends Endpoint {
     public WebSocketCommunicator(String url, ServerMessageObserver serverMessageObserver) throws ResponseException {
         try{
             url = url.replace("http","ws");
-            URI socketURI = new URI(url + "/connect");
+            URI socketURI = new URI(url + "/ws");
             this.serverMessageObserver = serverMessageObserver;
 
             WebSocketContainer container = ContainerProvider.getWebSocketContainer();

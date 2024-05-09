@@ -11,7 +11,7 @@ import client2server.ResponseException;
 import client2server.ServerFacade;
 import client2server.ServerMessageObserver;
 import ui.*;
-import webSocketMessages.serverMessages.ServerMessage;
+import websocket.messages.ServerMessage;
 
 import static ui.ChessBoardUI.Perspective.*;
 
@@ -59,7 +59,7 @@ public class Client implements ServerMessageObserver {
                 if(authToken!=null){
                     try {
                         if(curGame!=null) {
-                            //server.leaveResign(curGame.getGameID(), false, authToken);
+                            server.leaveResign(curGame.getGameID(), false, authToken);
                             curGame = null;
                             System.out.println("You have successfully left the game.");
                         }
@@ -206,7 +206,7 @@ public class Client implements ServerMessageObserver {
                     }
                 }
                 case "leave" -> {
-                    //server.leaveResign(curGame.getGameID(), false, authToken);
+                    server.leaveResign(curGame.getGameID(), false, authToken);
                     curGame = null;
                     System.out.println("You have successfully left the game.");
                 }
@@ -215,7 +215,7 @@ public class Client implements ServerMessageObserver {
                         char[] move = result[1].toCharArray();
                         try {
                             curGame.getGame().makeMove(evalMove(move));
-                            //server.move(curGame.getGameID(), evalMove(move), authToken);
+                            server.move(curGame.getGameID(), evalMove(move), authToken);
                         }catch(InvalidMoveException ime){
                             System.out.println("\n" + EscapeSequences.SET_TEXT_COLOR_RED + ime.getMessage());
                         }
@@ -225,7 +225,7 @@ public class Client implements ServerMessageObserver {
                     }
                 }
                 case "resign" -> {
-                    //server.leaveResign(curGame.getGameID(), true, authToken);
+                    server.leaveResign(curGame.getGameID(), true, authToken);
                 }
                 default -> {
                     isSuccessful = false;
@@ -233,7 +233,7 @@ public class Client implements ServerMessageObserver {
             }
             return isSuccessful;
         }
-        catch(/*Response*/Exception re){
+        catch(ResponseException re){
             System.out.println(re.getMessage());
             evaluate(new String[]{"help"});
             return true;

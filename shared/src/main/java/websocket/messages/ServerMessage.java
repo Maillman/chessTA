@@ -1,4 +1,4 @@
-package webSocketMessages.serverMessages;
+package websocket.messages;
 
 import Model.Game;
 import com.google.gson.Gson;

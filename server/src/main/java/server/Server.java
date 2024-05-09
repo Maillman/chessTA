@@ -3,17 +3,17 @@ package server;
 import Model.*;
 import com.google.gson.Gson;
 import dataaccess.*;
-//import server.WebSocket.WebSocketHandler;
+import server.WebSocket.WebSocketHandler;
 import service.*;
 import spark.*;
 
 public class Server {
-    //private final WebSocketHandler webSocketHandler;
+    private final WebSocketHandler webSocketHandler;
     private final UserService userService;
     private final ClearService clearService;
     private final GameService gameService;
     public Server(){
-        //MemoryDAO
+        //SQLDAO
         UserDAO userDAO = new SQLUserDAO();
         AuthDAO authDAO = new SQLAuthDAO();
         GameDAO gameDAO = new SQLGameDAO();
@@ -21,14 +21,14 @@ public class Server {
         clearService = new ClearService(userDAO, authDAO, gameDAO);
         gameService = new GameService(authDAO, gameDAO);
 
-        //webSocketHandler = new WebSocketHandler(userService,gameService);
+        webSocketHandler = new WebSocketHandler(userService,gameService);
     }
     public Server(UserDAO userDAO, AuthDAO authDAO, GameDAO gameDAO) {
         userService = new UserService(userDAO, authDAO);
         clearService = new ClearService(userDAO, authDAO, gameDAO);
         gameService = new GameService(authDAO, gameDAO);
 
-        //webSocketHandler = new WebSocketHandler(userService,gameService);
+        webSocketHandler = new WebSocketHandler(userService,gameService);
     }
 
     public int run(int desiredPort) {
@@ -36,7 +36,7 @@ public class Server {
 
         Spark.staticFiles.location("web");
 
-        //Spark.webSocket("/connect", webSocketHandler);
+        Spark.webSocket("/ws", webSocketHandler);
 
         // Register your endpoints and handle exceptions here.
         Spark.get("/", (req, res) -> "Hello, Chess Server!");
@@ -58,7 +58,7 @@ public class Server {
     private Object clear(Request req, Response res) {
         try {
             clearService.clear();
-            //webSocketHandler.getConnections().clear();
+            webSocketHandler.getConnections().clear();
             return "{}";
         }catch(DataAccessException dae){
             return daeHandler(res, dae);

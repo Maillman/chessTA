@@ -3,8 +3,11 @@ package service;
 import Model.Auth;
 import Model.Join;
 import Model.Game;
+import chess.ChessBoard;
 import chess.ChessGame;
+import chess.ChessPosition;
 import dataaccess.*;
+import org.junit.jupiter.api.Assertions;
 
 import java.util.List;
 import java.util.Objects;
@@ -68,10 +71,16 @@ public class GameService {
         Auth auth = authDAO.getAuth(authToken);
         if(auth!=null){
             Game foundGame = gameDAO.getGame(gameID);
-            if(Objects.equals(foundGame.getWhiteUsername(), auth.getUsername())&&updatedGame.getGame().getTeamTurn() == ChessGame.TeamColor.BLACK){
-                return gameDAO.updateGame(auth.getUsername(),foundGame.getGameID(), "WHITE",updatedGame);
-            }else if(Objects.equals(foundGame.getBlackUsername(), auth.getUsername())&&updatedGame.getGame().getTeamTurn() == ChessGame.TeamColor.WHITE){
-                return gameDAO.updateGame(auth.getUsername(),foundGame.getGameID(), "BLACK",updatedGame);
+            String theName;
+            if(Objects.equals(foundGame.getGame().getBoard(), updatedGame.getGame().getBoard())){
+                theName = null;
+            }else{
+                theName = auth.getUsername();
+            }
+            if(Objects.equals(foundGame.getWhiteUsername(), auth.getUsername())&&(updatedGame.getGame().getTeamTurn() == ChessGame.TeamColor.BLACK||Objects.equals(foundGame.getGame().getBoard(), updatedGame.getGame().getBoard()))){
+                return gameDAO.updateGame(theName,foundGame.getGameID(), "WHITE",updatedGame);
+            }else if(Objects.equals(foundGame.getBlackUsername(), auth.getUsername())&&(updatedGame.getGame().getTeamTurn() == ChessGame.TeamColor.WHITE||Objects.equals(foundGame.getGame().getBoard(), updatedGame.getGame().getBoard()))){
+                return gameDAO.updateGame(theName,foundGame.getGameID(), "BLACK",updatedGame);
             }else{
                 throw new DataAccessException("Unauthorized!");
             }

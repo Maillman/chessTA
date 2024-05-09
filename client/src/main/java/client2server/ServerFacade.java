@@ -3,7 +3,7 @@ package client2server;
 import Model.*;
 import chess.ChessMove;
 import com.google.gson.Gson;
-import webSocketMessages.userCommands.UserGameCommand;
+import websocket.commands.UserGameCommand;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -62,7 +62,7 @@ public class ServerFacade {
             }
         }finally{
             if (ws != null) {
-                //wsJoin(join, authToken);
+                wsJoin(join, authToken);
             }
         }
         return game;
@@ -73,7 +73,6 @@ public class ServerFacade {
         conn.makeRequest("DELETE", path, null, null);
     }
 
-    /*
     public void leaveResign(Integer gameID, Boolean isResigning, String authToken) throws ResponseException {
         try{
             if(ws!=null) {
@@ -90,8 +89,6 @@ public class ServerFacade {
             throw new ResponseException(500, ioe.getMessage());
         }
     }
-     */
-    /*
     public void move(Integer gameID, ChessMove chessMove, String authToken) throws ResponseException{
         try {
             if(ws!=null) {
@@ -105,16 +102,10 @@ public class ServerFacade {
             throw new ResponseException(500, ioe.getMessage());
         }
     }
-     */
-    /*
     private void wsJoin(Join join, String authToken) throws ResponseException {
         try {
             var userGameCommand = new UserGameCommand(authToken);
-            if (join.getPlayerColor() == null) {
-                userGameCommand.setCommandType(UserGameCommand.CommandType.JOIN_OBSERVER);
-            } else {
-                userGameCommand.setCommandType(UserGameCommand.CommandType.JOIN_PLAYER);
-            }
+            userGameCommand.setCommandType(UserGameCommand.CommandType.CONNECT);
             userGameCommand.setJoinColor(join.getPlayerColor());
             userGameCommand.setGameID(join.getGameID());
             assert ws != null;
@@ -123,5 +114,4 @@ public class ServerFacade {
             throw new ResponseException(500, ioe.getMessage());
         }
     }
-     */
 }
