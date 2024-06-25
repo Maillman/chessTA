@@ -1,7 +1,7 @@
 package dataaccess;
 
 
-import Model.Game;
+import model.Game;
 
 import chess.ChessGame;
 import org.junit.jupiter.api.*;

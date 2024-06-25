@@ -1,4 +1,4 @@
-package client2server;
+package clienttoserver;
 
 import com.google.gson.Gson;
 import websocket.messages.ServerMessage;

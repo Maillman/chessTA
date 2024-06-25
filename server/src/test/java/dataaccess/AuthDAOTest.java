@@ -1,6 +1,6 @@
 package dataaccess;
 
-import Model.Auth;
+import model.Auth;
 
 import org.junit.jupiter.api.*;
 

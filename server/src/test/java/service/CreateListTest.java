@@ -1,7 +1,7 @@
 package service;
 
-import Model.Auth;
-import Model.Game;
+import model.Auth;
+import model.Game;
 import chess.ChessGame;
 import dataaccess.DataAccessException;
 import org.junit.jupiter.api.*;
@@ -18,7 +18,7 @@ public class CreateListTest extends BaseTest{
     protected static Auth auth;
     protected static Game newGame;
     @BeforeEach
-    public void SetupGame() throws DataAccessException {
+    public void setupGame() throws DataAccessException {
         expectedGames.clear();
         resultedGames.clear();
         //The game
@@ -34,7 +34,7 @@ public class CreateListTest extends BaseTest{
     @Test
     @Order(1)
     @DisplayName("Create and List Several Games Test!")
-    public void create_listGames() throws DataAccessException {
+    public void createListGames() throws DataAccessException {
         //The games
         Game anotherGame = new Game(2,"","","ssehC",new ChessGame());
         Game aNewGame = new Game(3,"","","newGame",new ChessGame());

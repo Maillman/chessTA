@@ -1,9 +1,9 @@
 package server;
 
-import Model.*;
+import model.*;
 import com.google.gson.Gson;
 import dataaccess.*;
-import server.WebSocket.WebSocketHandler;
+import server.websocket.WebSocketHandler;
 import service.*;
 import spark.*;
 

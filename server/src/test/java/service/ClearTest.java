@@ -1,6 +1,6 @@
 package service;
 
-import Model.User;
+import model.User;
 import dataaccess.DataAccessException;
 import org.junit.jupiter.api.*;
 

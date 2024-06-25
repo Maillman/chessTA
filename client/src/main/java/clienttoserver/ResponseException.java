@@ -1,4 +1,4 @@
-package client2server;
+package clienttoserver;
 
 public class ResponseException extends Exception {
     public int getStatusCode() {

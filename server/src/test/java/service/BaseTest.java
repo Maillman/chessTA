@@ -1,6 +1,6 @@
 package service;
 
-import Model.User;
+import model.User;
 import dataaccess.*;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;

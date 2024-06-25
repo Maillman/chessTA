@@ -1,13 +1,10 @@
 package service;
 
-import Model.Auth;
-import Model.Join;
-import Model.Game;
-import chess.ChessBoard;
+import model.Auth;
+import model.Join;
+import model.Game;
 import chess.ChessGame;
-import chess.ChessPosition;
 import dataaccess.*;
-import org.junit.jupiter.api.Assertions;
 
 import java.util.List;
 import java.util.Objects;

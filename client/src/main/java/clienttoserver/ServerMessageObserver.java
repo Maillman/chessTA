@@ -1,4 +1,4 @@
-package client2server;
+package clienttoserver;
 
 
 import websocket.messages.ServerMessage;

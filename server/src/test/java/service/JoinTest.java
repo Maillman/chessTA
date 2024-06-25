@@ -1,8 +1,8 @@
 package service;
 
-import Model.Auth;
-import Model.Join;
-import Model.Game;
+import model.Auth;
+import model.Join;
+import model.Game;
 import chess.ChessGame;
 import dataaccess.DataAccessException;
 import org.junit.jupiter.api.*;

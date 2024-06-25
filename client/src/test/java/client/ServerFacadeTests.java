@@ -1,16 +1,15 @@
 package client;
 
-import Model.*;
+import model.*;
 
 import chess.ChessBoard;
 import chess.ChessGame;
-import client2server.ResponseException;
+import clienttoserver.ResponseException;
 import org.junit.jupiter.api.*;
-import client2server.ServerFacade;
+import clienttoserver.ServerFacade;
 import server.Server;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 
 public class ServerFacadeTests {

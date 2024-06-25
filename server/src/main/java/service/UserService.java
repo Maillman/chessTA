@@ -1,7 +1,7 @@
 package service;
 
-import Model.Auth;
-import Model.User;
+import model.Auth;
+import model.User;
 import dataaccess.*;
 import org.mindrot.jbcrypt.BCrypt;
 

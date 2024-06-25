@@ -1,6 +1,6 @@
-package client2server;
+package clienttoserver;
 
-import Model.*;
+import model.*;
 import chess.ChessMove;
 import com.google.gson.Gson;
 import websocket.commands.UserGameCommand;

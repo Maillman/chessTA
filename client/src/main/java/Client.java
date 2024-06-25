@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
-import Model.*;
+import model.*;
 import chess.*;
-import client2server.ResponseException;
-import client2server.ServerFacade;
-import client2server.ServerMessageObserver;
+import clienttoserver.ResponseException;
+import clienttoserver.ServerFacade;
+import clienttoserver.ServerMessageObserver;
 import ui.*;
 import websocket.messages.ServerMessage;
 

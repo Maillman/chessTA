@@ -1,7 +1,7 @@
-package server.WebSocket;
+package server.websocket;
 
-import Model.Auth;
-import Model.Game;
+import model.Auth;
+import model.Game;
 import chess.ChessMove;
 import com.google.gson.Gson;
 import org.eclipse.jetty.websocket.api.Session;
