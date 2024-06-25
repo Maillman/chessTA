@@ -315,7 +315,12 @@ public class Client implements ServerMessageObserver {
         ChessPosition startPos = evalPos(Arrays.copyOfRange(moveInChars,0,2));
         ChessPosition endPos = evalPos(Arrays.copyOfRange(moveInChars,2,4));
         if(moveInChars.length>=5){
-            ChessPiece.PieceType[] possiblePieceTypes = new ChessPiece.PieceType[]{ChessPiece.PieceType.QUEEN, ChessPiece.PieceType.ROOK, ChessPiece.PieceType.BISHOP, ChessPiece.PieceType.KNIGHT};
+            ChessPiece.PieceType[] possiblePieceTypes = new ChessPiece.PieceType[]{
+                    ChessPiece.PieceType.QUEEN,
+                    ChessPiece.PieceType.ROOK,
+                    ChessPiece.PieceType.BISHOP,
+                    ChessPiece.PieceType.KNIGHT
+            };
             for(int i = 0; i < possiblePromotionPieces.length; i++) {
                 if (possiblePromotionPieces[i] == moveInChars[4]) {
                     ChessPiece.PieceType piecePromotion = possiblePieceTypes[i];
@@ -394,28 +399,43 @@ public class Client implements ServerMessageObserver {
         System.out.print(EscapeSequences.SET_TEXT_COLOR_WHITE);
     }
     private void helpPreLogin(){
-        System.out.println("Help: List possible commands.");
-        System.out.println("Register <USERNAME> <PASSWORD> <EMAIL>: Creates an account to interact with the server.");
-        System.out.println("Login <USERNAME> <PASSWORD>: Allows the ability to create, join, and list Chess Games in the server.");
-        System.out.println("Quit: Exit the program.");
+        String[] preLoginMenu = new String[]{
+                "Help: List possible commands.",
+                "Register <USERNAME> <PASSWORD> <EMAIL>: Creates an account to interact with the server.",
+                "Login <USERNAME> <PASSWORD>: Allows the ability to create, join, and list Chess Games in the server.",
+                "Quit: Exit the program."
+        };
+        for (String preLoginCommand : preLoginMenu) {
+            System.out.println(preLoginCommand);
+        }
     }
     private void helpPostLogin(){
-        System.out.println("Help: List possible commands.");
-        System.out.println("Logout: Log out of the server.");
-        System.out.println("List: Lists all of the games that currently exist in the server.");
-        System.out.println("Create <GAMENAME>: Creates a game of chess to join and play.");
-        System.out.println("Join <ID> [WHITE|BLACK|<empty>]: Allows the ability to play (or observe if no color is specified) the specified game of chess.");
-        System.out.println("Observe <ID>: Allows the ability to observe the specified game of chess.");
-        System.out.println("Quit: Exit the program.");
+        String[] postLoginMenu = new String[]{
+                "Help: List possible commands.",
+                "Logout: Log out of the server.",
+                "List: Lists all of the games that currently exist in the server.",
+                "Create <GAMENAME>: Creates a game of chess to join and play.",
+                "Join <ID> [WHITE|BLACK|<empty>]: Allows the ability to play (or observe if no color is specified) the specified game of chess.",
+                "Observe <ID>: Allows the ability to observe the specified game of chess.",
+                "Quit: Exit the program."
+        };
+        for (String postLoginCommand : postLoginMenu) {
+            System.out.println(postLoginCommand);
+        }
     }
     private void helpGameplay(){
-        System.out.println("Help: List possible commands.");
-        System.out.println("Redraw: Redraws the chess board.");
-        System.out.println("Leave: Leave the current game.");
-        System.out.println("Move <CHESSMOVE>: Make a move in the current game, moving a piece from starting position to ending position (E.G.: 'Move e4e6'");
-        System.out.println("Resign: Forfeit the game (The game will immediately end!).");
-        System.out.println("Highlight <CHESSPOSITION>: Highlights all the legal moves of the chess piece at the chosen chess position.");
-        System.out.println("Quit: Exit the program.");
+        String[] gameplayMenu = new String[]{
+                "Help: List possible commands.",
+                "Redraw: Redraws the chess board.",
+                "Leave: Leave the current game.",
+                "Move <CHESSMOVE>: Make a move in the current game, moving a piece from starting position to ending position (E.G.: 'Move e4e6'",
+                "Resign: Forfeit the game (The game will immediately end!).",
+                "Highlight <CHESSPOSITION>: Highlights all the legal moves of the chess piece at the chosen chess position.",
+                "Quit: Exit the program."
+        };
+        for (String gameplayCommand : gameplayMenu) {
+            System.out.println(gameplayCommand);
+        }
     }
     private void printPrompt() {
         System.out.print("\n" + EscapeSequences.SET_TEXT_COLOR_GREEN + " >>> " + EscapeSequences.SET_TEXT_COLOR_WHITE);
