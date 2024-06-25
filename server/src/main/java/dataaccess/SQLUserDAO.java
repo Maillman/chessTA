@@ -20,7 +20,8 @@ public class SQLUserDAO implements UserDAO{
     @Override
     public User getUser(String username) throws DataAccessException {
         try (var conn = DatabaseManager.getConnection()) {
-            try (var preparedStatement = conn.prepareStatement("select username, password, email from users where username=?", RETURN_GENERATED_KEYS)){
+            String sql = "select username, password, email from users where username=?";
+            try (var preparedStatement = conn.prepareStatement(sql, RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, username);
                 try (var rs = preparedStatement.executeQuery()) {
                     rs.next();
@@ -39,7 +40,8 @@ public class SQLUserDAO implements UserDAO{
     @Override
     public void createUser(User user) throws DataAccessException {
         try (var conn = DatabaseManager.getConnection()) {
-            try (var preparedStatement = conn.prepareStatement("insert into users (username, password, email) values (?, ?, ?)", RETURN_GENERATED_KEYS)){
+            String sql = "insert into users (username, password, email) values (?, ?, ?)";
+            try (var preparedStatement = conn.prepareStatement(sql, RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, user.getUsername());
                 preparedStatement.setString(2, user.getPassword());
                 preparedStatement.setString(3, user.getEmail());

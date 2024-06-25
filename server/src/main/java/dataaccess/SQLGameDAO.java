@@ -26,7 +26,8 @@ public class SQLGameDAO implements GameDAO{
     public List<Game> listGames() throws DataAccessException{
         List<Game> listGames = new ArrayList<>();
         try (var conn = DatabaseManager.getConnection()) {
-            try (var preparedStatement = conn.prepareStatement("select id, whiteusername, blackusername, gamename, chessgame from games", RETURN_GENERATED_KEYS)) {
+            String sql = "select id, whiteusername, blackusername, gamename, chessgame from games";
+            try (var preparedStatement = conn.prepareStatement(sql, RETURN_GENERATED_KEYS)) {
                 try (var rs = preparedStatement.executeQuery()) {
                     while(rs.next()){
                         int id = rs.getInt("id");
@@ -48,7 +49,8 @@ public class SQLGameDAO implements GameDAO{
     @Override
     public Game getGame(int gameID) throws DataAccessException{
         try (var conn = DatabaseManager.getConnection()) {
-            try (var preparedStatement = conn.prepareStatement("select id, whiteusername, blackusername, gamename, chessgame from games where id=?", RETURN_GENERATED_KEYS)) {
+            String sql = "select id, whiteusername, blackusername, gamename, chessgame from games where id=?";
+            try (var preparedStatement = conn.prepareStatement(sql, RETURN_GENERATED_KEYS)) {
                 preparedStatement.setInt(1, gameID);
                 try (var rs = preparedStatement.executeQuery()) {
                     rs.next();
@@ -67,7 +69,8 @@ public class SQLGameDAO implements GameDAO{
     @Override
     public Game createGame(Game game) throws DataAccessException {
         try (var conn = DatabaseManager.getConnection()) {
-            try (var preparedStatement = conn.prepareStatement("insert into games (whiteusername, blackusername, gamename, chessgame) values (?, ?, ?, ?)", RETURN_GENERATED_KEYS)) {
+            String sql = "insert into games (whiteusername, blackusername, gamename, chessgame) values (?, ?, ?, ?)";
+            try (var preparedStatement = conn.prepareStatement(sql, RETURN_GENERATED_KEYS)) {
                 var json = new Gson().toJson(game.getGame());
                 preparedStatement.setString(1,game.getWhiteUsername());
                 preparedStatement.setString(2,game.getBlackUsername());
@@ -104,7 +107,8 @@ public class SQLGameDAO implements GameDAO{
             }
         }
         try (var conn = DatabaseManager.getConnection()) {
-            try (var preparedStatement = conn.prepareStatement("update games set whiteusername=?, blackusername=?, gamename=?, chessgame=? where id=?", RETURN_GENERATED_KEYS)) {
+            String sql = "update games set whiteusername=?, blackusername=?, gamename=?, chessgame=? where id=?";
+            try (var preparedStatement = conn.prepareStatement(sql, RETURN_GENERATED_KEYS)) {
                 var json = new Gson().toJson(newGame.getGame());
                 preparedStatement.setString(1, newGame.getWhiteUsername());
                 preparedStatement.setString(2, newGame.getBlackUsername());

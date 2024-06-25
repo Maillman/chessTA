@@ -73,7 +73,7 @@ public class WebSocketHandler {
         }
     }
 
-    private void makeMoveLogic(Session session, UserGameCommand userGameCommand, Auth auth) throws DataAccessException, InvalidMoveException, IOException {
+    private void makeMoveLogic(Session session, UserGameCommand userGameCommand, Auth auth) throws Exception {
         int gameID = userGameCommand.getGameID();
         if(!connections.gamesOver.contains(gameID)) {
             ChessMove chessMove = userGameCommand.getMove();

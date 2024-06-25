@@ -34,12 +34,24 @@ public class GameService {
             }
             Game foundGame = gameDAO.getGame(join.getGameID());
             if(foundGame!=null&&join.getPlayerColor()!=null){
-                if(     ((Objects.equals(join.getPlayerColor(), "WHITE") && ((Objects.equals(foundGame.getWhiteUsername(), ""))||(foundGame.getWhiteUsername()==null)|| Objects.equals(foundGame.getWhiteUsername(), auth.getUsername())))) ||
-                        ((Objects.equals(join.getPlayerColor(), "BLACK") && ((Objects.equals(foundGame.getBlackUsername(), ""))||(foundGame.getBlackUsername()==null)|| Objects.equals(foundGame.getWhiteUsername(), auth.getUsername())))) ||
-                        ((!Objects.equals(join.getPlayerColor(),"WHITE") && !Objects.equals(join.getPlayerColor(),"BLACK")))){
-                    return gameDAO.updateGame(auth.getUsername(),foundGame.getGameID(),join.getPlayerColor(),foundGame);
-                }else{
-                    throw new DataAccessException("Already Taken!");
+                switch(join.getPlayerColor()){
+                    case "WHITE" -> {
+                        if((whiteFree(foundGame) || whiteReserved(foundGame, auth))){
+                            return gameDAO.updateGame(auth.getUsername(),foundGame.getGameID(),join.getPlayerColor(),foundGame);
+                        }else{
+                            throw new DataAccessException("Already Taken!");
+                        }
+                    }
+                    case "BLACK" -> {
+                        if((blackFree(foundGame) || blackReserved(foundGame, auth))){
+                            return gameDAO.updateGame(auth.getUsername(),foundGame.getGameID(),join.getPlayerColor(),foundGame);
+                        }else{
+                            throw new DataAccessException("Already Taken!");
+                        }
+                    }
+                    default -> {
+                        return gameDAO.updateGame(auth.getUsername(),foundGame.getGameID(),join.getPlayerColor(),foundGame);
+                    }
                 }
             }else{
                 throw new DataAccessException("Bad Request!");
@@ -47,6 +59,14 @@ public class GameService {
         }else{
             throw new DataAccessException("Unauthorized!");
         }
+    }
+
+    private static boolean blackFree(Game foundGame) {
+        return (Objects.equals(foundGame.getBlackUsername(), "")) || (foundGame.getBlackUsername() == null);
+    }
+
+    private static boolean whiteFree(Game foundGame) {
+        return (Objects.equals(foundGame.getWhiteUsername(), "")) || (foundGame.getWhiteUsername() == null);
     }
 
     public List<Game> listGames(String authToken) throws DataAccessException {
@@ -69,14 +89,14 @@ public class GameService {
         if(auth!=null){
             Game foundGame = gameDAO.getGame(gameID);
             String theName;
-            if(Objects.equals(foundGame.getGame().getBoard(), updatedGame.getGame().getBoard())){
+            if(unchangedBoard(updatedGame, foundGame)){
                 theName = null;
             }else{
                 theName = auth.getUsername();
             }
-            if(Objects.equals(foundGame.getWhiteUsername(), auth.getUsername())&&(updatedGame.getGame().getTeamTurn() == ChessGame.TeamColor.BLACK||Objects.equals(foundGame.getGame().getBoard(), updatedGame.getGame().getBoard()))){
+            if(whiteReserved(foundGame, auth) &&(switchTurns(updatedGame,ChessGame.TeamColor.BLACK)||unchangedBoard(updatedGame, foundGame))){
                 return gameDAO.updateGame(theName,foundGame.getGameID(), "WHITE",updatedGame);
-            }else if(Objects.equals(foundGame.getBlackUsername(), auth.getUsername())&&(updatedGame.getGame().getTeamTurn() == ChessGame.TeamColor.WHITE||Objects.equals(foundGame.getGame().getBoard(), updatedGame.getGame().getBoard()))){
+            }else if(blackReserved(foundGame, auth) &&(switchTurns(updatedGame,ChessGame.TeamColor.WHITE)||unchangedBoard(updatedGame, foundGame))){
                 return gameDAO.updateGame(theName,foundGame.getGameID(), "BLACK",updatedGame);
             }else{
                 throw new DataAccessException("Unauthorized!");
@@ -84,5 +104,21 @@ public class GameService {
         }else{
             throw new DataAccessException("Unauthorized!");
         }
+    }
+
+    private static boolean unchangedBoard(Game updatedGame, Game foundGame) {
+        return Objects.equals(foundGame.getGame().getBoard(), updatedGame.getGame().getBoard());
+    }
+
+    private static boolean switchTurns(Game updatedGame, ChessGame.TeamColor switchColor) {
+        return updatedGame.getGame().getTeamTurn() == switchColor;
+    }
+
+    private static boolean blackReserved(Game foundGame, Auth auth) {
+        return Objects.equals(foundGame.getBlackUsername(), auth.getUsername());
+    }
+
+    private static boolean whiteReserved(Game foundGame, Auth auth) {
+        return Objects.equals(foundGame.getWhiteUsername(), auth.getUsername());
     }
 }

@@ -19,7 +19,8 @@ public class SQLAuthDAO implements AuthDAO{
     @Override
     public Auth createAuth(String authToken, String username) throws DataAccessException {
         try (var conn = DatabaseManager.getConnection()) {
-            try (var preparedStatement = conn.prepareStatement("insert into auths (token, username) values (?, ?)", RETURN_GENERATED_KEYS)){
+            String sql = "insert into auths (token, username) values (?, ?)";
+            try (var preparedStatement = conn.prepareStatement(sql, RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, authToken);
                 preparedStatement.setString(2, username);
 
@@ -35,7 +36,8 @@ public class SQLAuthDAO implements AuthDAO{
     @Override
     public Auth getAuth(String authToken) throws DataAccessException{
         try (var conn = DatabaseManager.getConnection()) {
-            try (var preparedStatement = conn.prepareStatement("select token, username from auths where token=?", RETURN_GENERATED_KEYS)){
+            String sql = "select token, username from auths where token=?";
+            try (var preparedStatement = conn.prepareStatement(sql, RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, authToken);
                 try (var rs = preparedStatement.executeQuery()) {
                     rs.next();
@@ -53,7 +55,8 @@ public class SQLAuthDAO implements AuthDAO{
     @Override
     public void deleteAuth(String authToken) throws DataAccessException{
         try (var conn = DatabaseManager.getConnection()) {
-            try (var preparedStatement = conn.prepareStatement("delete from auths where token=?")) {
+            String sql = "delete from auths where token=?";
+            try (var preparedStatement = conn.prepareStatement(sql)) {
                 preparedStatement.setString(1, authToken);
                 preparedStatement.executeUpdate();
             }
