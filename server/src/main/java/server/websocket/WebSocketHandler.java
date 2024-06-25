@@ -1,5 +1,7 @@
 package server.websocket;
 
+import chess.InvalidMoveException;
+import dataaccess.DataAccessException;
 import model.Auth;
 import model.Game;
 import chess.ChessMove;
@@ -40,65 +42,82 @@ public class WebSocketHandler {
             }
             switch (userGameCommand.getCommandType()) {
                 case CONNECT -> {
-                    String joinColor = userGameCommand.getPlayerColor();
-                    int gameID = userGameCommand.getGameID();
-                    Game game = gameService.getGame(gameID);
-                    if(Objects.equals(auth.getUsername(), game.getWhiteUsername())){
-                        if(Objects.equals(joinColor, "BLACK")){
-                            throw new Exception("Bad Request");
-                        }
-                        joinColor = "WHITE";
-                    }else if(Objects.equals(auth.getUsername(), game.getBlackUsername())){
-                        if(Objects.equals(joinColor, "WHITE")){
-                            throw new Exception("Bad Request");
-                        }
-                        joinColor = "BLACK";
-                    }else{
-                        joinColor = "OBSERVER";
-                    }
-                    join(auth, session, joinColor, game);
+                    connectLogic(session, userGameCommand, auth);
                 }
                 case LEAVE -> {
-                    int gameID = userGameCommand.getGameID();
-                    Game game = gameService.getGame(gameID);
-                    if(Objects.equals(game.getWhiteUsername(), auth.getUsername())){
-                        gameService.updateGame(auth.getAuthToken(), gameID, new Game(gameID,null,game.getBlackUsername(),game.getGameName(),game.getGame()));
-                    }else if(Objects.equals(game.getBlackUsername(), auth.getUsername())){
-                        gameService.updateGame(auth.getAuthToken(), gameID, new Game(gameID,game.getWhiteUsername(),null,game.getGameName(),game.getGame()));
-                    }
-                    leave(auth, gameID);
+                    leaveLogic(userGameCommand, auth);
                 }
                 case MAKE_MOVE -> {
-                    int gameID = userGameCommand.getGameID();
-                    if(!connections.gamesOver.contains(gameID)) {
-                        ChessMove chessMove = userGameCommand.getMove();
-                        Game foundGame = gameService.getGame(gameID);
-                        String chessPiece = foundGame.getGame().getBoard().getPiece(chessMove.getStartPosition()).toString();
-                        foundGame.getGame().makeMove(chessMove);
-                        Game updatedGame = gameService.updateGame(auth.getAuthToken(), gameID, foundGame);
-                        move(auth, session, gameID, chessPiece, chessMove, updatedGame);
-                    }else{
-                        error(session,"The game is over!");
-                    }
+                    makeMoveLogic(session, userGameCommand, auth);
                 }
                 case RESIGN -> {
-                    int gameID = userGameCommand.getGameID();
-                    Game game = gameService.getGame(gameID);
-                    if(connections.gamesOver.contains(gameID)){
-                        throw new Exception("The game is over!");
-                    }
-                    if(Objects.equals(auth.getUsername(), game.getWhiteUsername()) || Objects.equals(auth.getUsername(), game.getBlackUsername())) {
-                        connections.gamesOver.add(gameID);
-                        resign(session, auth, gameID);
-                    }else{
-                        throw new Exception("Unauthorized!");
-                    }
+                    resignLogic(session, userGameCommand, auth);
                 }
             }
         } catch(Exception e){
             error(session,e.getMessage());
         }
     }
+
+    private void resignLogic(Session session, UserGameCommand userGameCommand, Auth auth) throws Exception {
+        int gameID = userGameCommand.getGameID();
+        Game game = gameService.getGame(gameID);
+        if(connections.gamesOver.contains(gameID)){
+            throw new Exception("The game is over!");
+        }
+        if(Objects.equals(auth.getUsername(), game.getWhiteUsername()) || Objects.equals(auth.getUsername(), game.getBlackUsername())) {
+            connections.gamesOver.add(gameID);
+            resign(session, auth, gameID);
+        }else{
+            throw new Exception("Unauthorized!");
+        }
+    }
+
+    private void makeMoveLogic(Session session, UserGameCommand userGameCommand, Auth auth) throws DataAccessException, InvalidMoveException, IOException {
+        int gameID = userGameCommand.getGameID();
+        if(!connections.gamesOver.contains(gameID)) {
+            ChessMove chessMove = userGameCommand.getMove();
+            Game foundGame = gameService.getGame(gameID);
+            String chessPiece = foundGame.getGame().getBoard().getPiece(chessMove.getStartPosition()).toString();
+            foundGame.getGame().makeMove(chessMove);
+            Game updatedGame = gameService.updateGame(auth.getAuthToken(), gameID, foundGame);
+            move(auth, session, gameID, chessPiece, chessMove, updatedGame);
+        }else{
+            error(session,"The game is over!");
+        }
+    }
+
+    private void leaveLogic(UserGameCommand userGameCommand, Auth auth) throws DataAccessException, IOException {
+        int gameID = userGameCommand.getGameID();
+        Game game = gameService.getGame(gameID);
+        if(Objects.equals(game.getWhiteUsername(), auth.getUsername())){
+            gameService.updateGame(auth.getAuthToken(), gameID, new Game(gameID,null,game.getBlackUsername(),game.getGameName(),game.getGame()));
+        }else if(Objects.equals(game.getBlackUsername(), auth.getUsername())){
+            gameService.updateGame(auth.getAuthToken(), gameID, new Game(gameID,game.getWhiteUsername(),null,game.getGameName(),game.getGame()));
+        }
+        leave(auth, gameID);
+    }
+
+    private void connectLogic(Session session, UserGameCommand userGameCommand, Auth auth) throws Exception {
+        String joinColor = userGameCommand.getPlayerColor();
+        int gameID = userGameCommand.getGameID();
+        Game game = gameService.getGame(gameID);
+        if(Objects.equals(auth.getUsername(), game.getWhiteUsername())){
+            if(Objects.equals(joinColor, "BLACK")){
+                throw new Exception("Bad Request");
+            }
+            joinColor = "WHITE";
+        }else if(Objects.equals(auth.getUsername(), game.getBlackUsername())){
+            if(Objects.equals(joinColor, "WHITE")){
+                throw new Exception("Bad Request");
+            }
+            joinColor = "BLACK";
+        }else{
+            joinColor = "OBSERVER";
+        }
+        join(auth, session, joinColor, game);
+    }
+
     private void resign(Session session, Auth auth, Integer gameID) throws IOException {
         String username = auth.getUsername();
         String authToken = auth.getAuthToken();

@@ -57,55 +57,9 @@ public class ChessBoardUI {
         while(boardRow>=0&&boardRow<BOARD_SIZE_IN_SQUARES+2){
             while(boardColumn>=0&&boardColumn<BOARD_SIZE_IN_SQUARES+2){
                 if(boardRow==0||boardRow==9){
-                    //Letters
-                    setOuter(out);
-                    if(boardColumn==0||boardColumn==9){
-                        //The corners
-                        out.print(EMPTY.repeat(LINE_WIDTH_IN_CHARS));
-                    }else{
-                        //The letters
-                        out.print("\u2009\u2002" + LETTERS[boardColumn-1] + "\u2002\u202F\u200A");
-                    }
+                    border(out, boardColumn);
                 }else{
-                    //Main stuff
-                    if(boardColumn==0||boardColumn==9){
-                        //The numbers
-                        setOuter(out);
-                        out.print("\u2009\u2002" + boardRow + "\u2002\u202F\u200A");
-                    }else{
-                        //Main board!
-                        ChessPiece piece = theGame.getBoard().getPiece(new ChessPosition(boardRow,boardColumn));
-                        if(boardRow%2==0 ^ boardColumn%2==0){
-                            setWhiteSquare(out);
-                            if((highlightMoves!=null)&&highlightMoves.contains(new ChessMove(chessPosition,new ChessPosition(boardRow,boardColumn)))){
-                                setWhiteHighlight(out);
-                            }
-                        }else{
-                            setBlackSquare(out);
-                            if((highlightMoves!=null)&&highlightMoves.contains(new ChessMove(chessPosition,new ChessPosition(boardRow,boardColumn)))){
-                                setBlackHighlight(out);
-                            }
-                        }
-                        if(Objects.equals(chessPosition, new ChessPosition(boardRow, boardColumn))){
-                            setHighlight(out);
-                        }
-                        if(piece!=null) {
-                            switch (piece.getTeamColor()){
-                                case WHITE -> setWhitePiece(out);
-                                case BLACK -> setBlackPiece(out);
-                            }
-                            switch (piece.getPieceType()) {
-                                case BISHOP -> out.print(BLACK_BISHOP);
-                                case ROOK -> out.print(BLACK_ROOK);
-                                case QUEEN -> out.print(BLACK_QUEEN);
-                                case KNIGHT -> out.print(BLACK_KNIGHT);
-                                case KING -> out.print(BLACK_KING);
-                                case PAWN -> out.print(BLACK_PAWN);
-                            }
-                        }else{
-                            out.print(EMPTY);
-                        }
-                    }
+                    mainBoard(out, theGame, chessPosition, boardColumn, boardRow, highlightMoves);
                 }
                 //Ending statement
                 if(perspective==Perspective.BLACK){
@@ -123,6 +77,60 @@ public class ChessBoardUI {
             }else{
                 boardRow--;
                 boardColumn = 0;
+            }
+        }
+    }
+
+    private static void border(PrintStream out, int boardColumn) {
+        //Letters
+        setOuter(out);
+        if(boardColumn ==0|| boardColumn ==9){
+            //The corners
+            out.print(EMPTY.repeat(LINE_WIDTH_IN_CHARS));
+        }else{
+            //The letters
+            out.print("\u2009\u2002" + LETTERS[boardColumn -1] + "\u2002\u202F\u200A");
+        }
+    }
+
+    private static void mainBoard(PrintStream out, ChessGame theGame, ChessPosition chessPosition, int boardColumn, int boardRow, Collection<ChessMove> highlightMoves) {
+        //Main stuff
+        if(boardColumn ==0|| boardColumn ==9){
+            //The numbers
+            setOuter(out);
+            out.print("\u2009\u2002" + boardRow + "\u2002\u202F\u200A");
+        }else{
+            //Main board!
+            ChessPiece piece = theGame.getBoard().getPiece(new ChessPosition(boardRow, boardColumn));
+            if(boardRow %2==0 ^ boardColumn %2==0){
+                setWhiteSquare(out);
+                if((highlightMoves !=null)&& highlightMoves.contains(new ChessMove(chessPosition,new ChessPosition(boardRow, boardColumn)))){
+                    setWhiteHighlight(out);
+                }
+            }else{
+                setBlackSquare(out);
+                if((highlightMoves !=null)&& highlightMoves.contains(new ChessMove(chessPosition,new ChessPosition(boardRow, boardColumn)))){
+                    setBlackHighlight(out);
+                }
+            }
+            if(Objects.equals(chessPosition, new ChessPosition(boardRow, boardColumn))){
+                setHighlight(out);
+            }
+            if(piece!=null) {
+                switch (piece.getTeamColor()){
+                    case WHITE -> setWhitePiece(out);
+                    case BLACK -> setBlackPiece(out);
+                }
+                switch (piece.getPieceType()) {
+                    case BISHOP -> out.print(BLACK_BISHOP);
+                    case ROOK -> out.print(BLACK_ROOK);
+                    case QUEEN -> out.print(BLACK_QUEEN);
+                    case KNIGHT -> out.print(BLACK_KNIGHT);
+                    case KING -> out.print(BLACK_KING);
+                    case PAWN -> out.print(BLACK_PAWN);
+                }
+            }else{
+                out.print(EMPTY);
             }
         }
     }
