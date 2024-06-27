@@ -27,9 +27,15 @@ public class User{
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User user)) return false;
-        return Objects.equals(getUsername(), user.getUsername()) && Objects.equals(getPassword(), user.getPassword()) && Objects.equals(getEmail(), user.getEmail());
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof User user)) {
+            return false;
+        }
+        return Objects.equals(getUsername(), user.getUsername()) &&
+                Objects.equals(getPassword(), user.getPassword()) &&
+                Objects.equals(getEmail(), user.getEmail());
     }
 
     @Override

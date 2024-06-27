@@ -58,8 +58,12 @@ public class ChessPiece {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ChessPiece that)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof ChessPiece that)) {
+            return false;
+        }
         return pieceColor == that.pieceColor && type == that.type;
     }
 
@@ -151,12 +155,12 @@ public class ChessPiece {
         int forwardDirection = (piece.getTeamColor() == ChessGame.TeamColor.WHITE) ? 1 : -1;
         int startRow = (piece.getTeamColor() == ChessGame.TeamColor.WHITE) ? 2 : 7;
         int endRow = (piece.getTeamColor() == ChessGame.TeamColor.WHITE) ? 8 : 1;
-        ChessPosition newPos = new ChessPosition(curPos[0], curPos[1]);
+        ChessPosition newPos;
 
-        pawnMoveForward(board,curPos,myPosition,newPos,pieceMoves,forwardDirection,endRow);
+        pawnMoveForward(board,curPos,myPosition,pieceMoves,forwardDirection,endRow);
         //Start pawn moves forward twice
         if(myPosition.getRow()==startRow&&board.getPiece(new ChessPosition(curPos[0],curPos[1]))==null){
-            pawnMoveForward(board,curPos,myPosition,newPos,pieceMoves,forwardDirection,endRow);
+            pawnMoveForward(board,curPos,myPosition,pieceMoves,forwardDirection,endRow);
             curPos[0] -= forwardDirection;
         }
 
@@ -175,10 +179,10 @@ public class ChessPiece {
         }
     }
 
-    private void pawnMoveForward(ChessBoard board, int[] curPos,ChessPosition newPos, ChessPosition myPosition, Collection<ChessMove> pieceMoves,int forwardDirection, int endRow){
-        curPos[0] += forwardDirection;
-        newPos = new ChessPosition(curPos[0], curPos[1]);
-        addPawnMove(board, myPosition, newPos, pieceMoves, endRow);
+    private void pawnMoveForward(ChessBoard board, int[] curPos, ChessPosition myPos, Collection<ChessMove> pieceMoves,int forward, int endRow){
+        curPos[0] += forward;
+        ChessPosition newPos = new ChessPosition(curPos[0], curPos[1]);
+        addPawnMove(board, myPos, newPos, pieceMoves, endRow);
     }
 
     private void addPawnMove(ChessBoard board, ChessPosition myPosition, ChessPosition newPos, Collection<ChessMove> pieceMoves, int endRow) {
