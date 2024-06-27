@@ -24,8 +24,12 @@ public class MemoryUserDAO implements UserDAO {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof MemoryUserDAO that)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof MemoryUserDAO that)) {
+            return false;
+        }
         return Objects.equals(users, that.users);
     }
 

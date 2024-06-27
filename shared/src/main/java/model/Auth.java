@@ -21,9 +21,14 @@ public class Auth {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Auth auth)) return false;
-        return Objects.equals(getAuthToken(), auth.getAuthToken()) && Objects.equals(getUsername(), auth.getUsername());
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Auth auth)) {
+            return false;
+        }
+        return Objects.equals(getAuthToken(), auth.getAuthToken()) &&
+                Objects.equals(getUsername(), auth.getUsername());
     }
 
     @Override

@@ -30,8 +30,12 @@ public class MemoryAuthDAO implements AuthDAO{
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof MemoryAuthDAO that)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof MemoryAuthDAO that)) {
+            return false;
+        }
         return Objects.equals(auths, that.auths);
     }
 

@@ -23,8 +23,12 @@ public class Games {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Games games1)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Games games1)) {
+            return false;
+        }
         return Objects.equals(getGames(), games1.getGames());
     }
 

@@ -21,9 +21,14 @@ public class Join {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Join join)) return false;
-        return Objects.equals(getPlayerColor(), join.getPlayerColor()) && Objects.equals(getGameID(), join.getGameID());
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Join join)) {
+            return false;
+        }
+        return Objects.equals(getPlayerColor(), join.getPlayerColor()) &&
+                Objects.equals(getGameID(), join.getGameID());
     }
 
     @Override

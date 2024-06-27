@@ -54,9 +54,14 @@ public class MemoryGameDAO implements GameDAO{
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof MemoryGameDAO that)) return false;
-        return gameID == that.gameID && Objects.equals(games, that.games);
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof MemoryGameDAO that)) {
+            return false;
+        }
+        return gameID == that.gameID &&
+                Objects.equals(games, that.games);
     }
 
     @Override
