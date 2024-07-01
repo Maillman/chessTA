@@ -93,27 +93,27 @@ public class ChessBoardUI {
         }
     }
 
-    private static void mainBoard(PrintStream out, ChessGame theGame, ChessPosition chessPosition, int boardColumn, int boardRow, Collection<ChessMove> highlightMoves) {
+    private static void mainBoard(PrintStream out, ChessGame theGame, ChessPosition chessPos, int col, int row, Collection<ChessMove> highlight) {
         //Main stuff
-        if(boardColumn ==0|| boardColumn ==9){
+        if(col ==0|| col ==9){
             //The numbers
             setOuter(out);
-            out.print("\u2009\u2002" + boardRow + "\u2002\u202F\u200A");
+            out.print("\u2009\u2002" + row + "\u2002\u202F\u200A");
         }else{
             //Main board!
-            ChessPiece piece = theGame.getBoard().getPiece(new ChessPosition(boardRow, boardColumn));
-            if(boardRow %2==0 ^ boardColumn %2==0){
+            ChessPiece piece = theGame.getBoard().getPiece(new ChessPosition(row, col));
+            if(row %2==0 ^ col %2==0){
                 setWhiteSquare(out);
-                if((highlightMoves !=null)&& highlightMoves.contains(new ChessMove(chessPosition,new ChessPosition(boardRow, boardColumn)))){
+                if((highlight !=null)&& highlight.contains(new ChessMove(chessPos,new ChessPosition(row, col)))){
                     setWhiteHighlight(out);
                 }
             }else{
                 setBlackSquare(out);
-                if((highlightMoves !=null)&& highlightMoves.contains(new ChessMove(chessPosition,new ChessPosition(boardRow, boardColumn)))){
+                if((highlight !=null)&& highlight.contains(new ChessMove(chessPos,new ChessPosition(row, col)))){
                     setBlackHighlight(out);
                 }
             }
-            if(Objects.equals(chessPosition, new ChessPosition(boardRow, boardColumn))){
+            if(Objects.equals(chessPos, new ChessPosition(row, col))){
                 setHighlight(out);
             }
             if(piece!=null) {

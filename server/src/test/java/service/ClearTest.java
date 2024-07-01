@@ -31,8 +31,14 @@ public class ClearTest extends BaseTest {
         //clear the database
         clear.clear();
         //check if the database cleared
-        Assertions.assertEquals(actualUserDAO.getUser(existingUser.getUsername()),testUserDAO.getUser(existingUser.getUsername()),"The user database did not clear!");
-        Assertions.assertEquals(actualUserDAO.getUser(newUser.getUsername()),testUserDAO.getUser(newUser.getUsername()),"The user database did not clear!");
+        checkDatabaseCleared();
+    }
+
+    private static void checkDatabaseCleared() throws DataAccessException {
+        String existName = existingUser.getUsername();
+        Assertions.assertEquals(actualUserDAO.getUser(existName),testUserDAO.getUser(existName),"The user database did not clear!");
+        String newName = newUser.getUsername();
+        Assertions.assertEquals(actualUserDAO.getUser(newName),testUserDAO.getUser(newName),"The user database did not clear!");
     }
 
     @Test
@@ -48,14 +54,13 @@ public class ClearTest extends BaseTest {
         testUserDAO.createUser(newUser);
         //clear the database
         clear.clear();
-        Assertions.assertEquals(actualUserDAO.getUser(existingUser.getUsername()),testUserDAO.getUser(existingUser.getUsername()),"The user database did not clear!");
-        Assertions.assertEquals(actualUserDAO.getUser(newUser.getUsername()),testUserDAO.getUser(newUser.getUsername()),"The user database did not clear!");
+        //check if the database cleared
+        checkDatabaseCleared();
         //create more filler users
         newUser = new User("Phoenix_Gamer","...21FDS-=_game","Leverage@TheWorld.com");
         testUserDAO.createUser(newUser);
         actualUserDAO.createUser(newUser);
         //check if the database is filled correctly post-clear
-        Assertions.assertEquals(actualUserDAO.getUser(existingUser.getUsername()),testUserDAO.getUser(existingUser.getUsername()),"The user database did not clear!");
-        Assertions.assertEquals(actualUserDAO.getUser(newUser.getUsername()),testUserDAO.getUser(newUser.getUsername()),"The user database did not clear!");
+        checkDatabaseCleared();
     }
 }

@@ -55,7 +55,10 @@ public class CreateListTest extends BaseTest{
         //The game
         Game newGame = new Game(1,"","","newGame",new ChessGame());
         //create game with unauthorized user
-        Assertions.assertThrows(DataAccessException.class, () -> create.createGame("UNLAWFUL CRIMINAL",newGame),"CreateGame not throwing exception!");
+        Assertions.assertThrows(
+                DataAccessException.class,
+                () -> create.createGame("UNLAWFUL CRIMINAL",newGame),
+                "CreateGame not throwing exception!");
     }
 
     @Test
@@ -73,6 +76,9 @@ public class CreateListTest extends BaseTest{
         expectedGames.add(anotherGame);
         expectedGames.add(aNewGame);
         //attempt to list game with unauthorized token
-        Assertions.assertThrows(DataAccessException.class, () -> create.listGames("UNLAWFUL CRIMINAL"),"ListGames not throwing exception!");
+        Assertions.assertThrows(
+                DataAccessException.class,
+                () -> create.listGames("UNLAWFUL CRIMINAL"),
+                "ListGames not throwing exception!");
     }
 }

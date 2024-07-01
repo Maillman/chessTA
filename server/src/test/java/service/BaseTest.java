@@ -3,6 +3,7 @@ package service;
 import model.User;
 import dataaccess.*;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.mindrot.jbcrypt.BCrypt;
@@ -63,5 +64,15 @@ public abstract class BaseTest {
         actualUserDAO.clear();
         actualAuthDAO.clear();
         actualGameDAO.clear();
+    }
+    public static void assertNewUser() throws DataAccessException {
+        String newName = newUser.getUsername();
+        Assertions.assertEquals(newUser.getUsername(),testUserDAO.getUser(newName).getUsername(),"User not registered in database.");
+        Assertions.assertTrue(BCrypt.checkpw(newUser.getPassword(), actualUserDAO.getUser(newName).getPassword()),"Password not entered correctly");
+        Assertions.assertEquals(newUser.getEmail(),testUserDAO.getUser(newName).getEmail(),"Email not registered in database.");
+    }
+    public static void assertExistingUser() throws DataAccessException {
+        String existName = existingUser.getUsername();
+        Assertions.assertEquals(actualUserDAO.getUser(existName),testUserDAO.getUser(existName),"User not registered in database.");
     }
 }

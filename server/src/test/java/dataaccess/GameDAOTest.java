@@ -94,7 +94,10 @@ public class GameDAOTest {
     @DisplayName("Access Out of Bounds Test")
     public void outOfBounds(){
         //attempt to update a game that isn't in the database
-        Assertions.assertThrows(DataAccessException.class, () -> testGameDAO.updateGame("SomeUser",3,"WHITE",newGame),"Update not throwing exception!");
+        Assertions.assertThrows(
+                DataAccessException.class,
+                () -> testGameDAO.updateGame("SomeUser",3,"WHITE",newGame),
+                "Update not throwing exception!");
     }
 
     @Test

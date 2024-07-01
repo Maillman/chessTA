@@ -16,7 +16,7 @@ public class LoginTest extends BaseTest {
         Auth auth = login.login(existingUser);
         //check if the user has been logged-in
         //user is in the /user database
-        Assertions.assertEquals(actualUserDAO.getUser(existingUser.getUsername()),testUserDAO.getUser(existingUser.getUsername()),"User not register in database.");
+        assertExistingUser();
         //authToken is in the /auth database
         Assertions.assertEquals(auth, testAuthDAO.getAuth(auth.getAuthToken()), "authToken not registered in database.");
     }

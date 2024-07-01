@@ -43,7 +43,8 @@ public class ServerFacadeTests {
 
     @Test
     void sendCrap() throws Exception {
-        Assertions.assertThrows(ResponseException.class, () -> facade.create(new Game(10,"White","Hello There","",new ChessGame(ChessGame.TeamColor.WHITE,new ChessBoard())),"authToken"));
+        Game randomGame = new Game(10,"White","Hello There","",new ChessGame(ChessGame.TeamColor.WHITE,new ChessBoard()));
+        Assertions.assertThrows(ResponseException.class, () -> facade.create(randomGame,"authToken"));
         Assertions.assertThrows(ResponseException.class, () -> facade.register(new User(null,null,null)));
         Assertions.assertThrows(ResponseException.class, () -> facade.login(new User("Hackerman","Malware","StealData")));
         Assertions.assertThrows(ResponseException.class, () -> facade.register(new User("Trying","CoolPassword",null)));

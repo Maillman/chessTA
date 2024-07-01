@@ -34,31 +34,29 @@ public class GameService {
             }
             Game foundGame = gameDAO.getGame(join.getGameID());
             if(foundGame!=null&&join.getPlayerColor()!=null){
-                switch(join.getPlayerColor()){
-                    case "WHITE" -> {
-                        if((whiteFree(foundGame) || whiteReserved(foundGame, auth))){
-                            return gameDAO.updateGame(auth.getUsername(),foundGame.getGameID(),join.getPlayerColor(),foundGame);
-                        }else{
-                            throw new DataAccessException("Already Taken!");
-                        }
-                    }
-                    case "BLACK" -> {
-                        if((blackFree(foundGame) || blackReserved(foundGame, auth))){
-                            return gameDAO.updateGame(auth.getUsername(),foundGame.getGameID(),join.getPlayerColor(),foundGame);
-                        }else{
-                            throw new DataAccessException("Already Taken!");
-                        }
-                    }
-                    default -> {
-                        return gameDAO.updateGame(auth.getUsername(),foundGame.getGameID(),join.getPlayerColor(),foundGame);
-                    }
-                }
+                return joiningGame(join, foundGame, auth);
             }else{
                 throw new DataAccessException("Bad Request!");
             }
         }else{
             throw new DataAccessException("Unauthorized!");
         }
+    }
+
+    private Game joiningGame(Join join, Game foundGame, Auth auth) throws DataAccessException {
+        switch(join.getPlayerColor()){
+            case "WHITE" -> {
+                if(!(whiteFree(foundGame) || whiteReserved(foundGame, auth))){
+                    throw new DataAccessException("Already Taken!");
+                }
+            }
+            case "BLACK" -> {
+                if(!(blackFree(foundGame) || blackReserved(foundGame, auth))){
+                    throw new DataAccessException("Already Taken!");
+                }
+            }
+        }
+        return gameDAO.updateGame(auth.getUsername(), foundGame.getGameID(), join.getPlayerColor(), foundGame);
     }
 
     private static boolean blackFree(Game foundGame) {
