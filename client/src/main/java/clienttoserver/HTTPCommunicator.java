@@ -1,6 +1,7 @@
 package clienttoserver;
 
 import com.google.gson.Gson;
+import model.ErrorMessage;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,6 +32,9 @@ public class HTTPCommunicator {
             throwIfNotSuccessful(http);
             return readBody(http, responseClass);
         }catch(Exception e){
+            if(e instanceof ResponseException){
+                throw (ResponseException) e;
+            }
             throw new ResponseException(500, e.getMessage());
         }
     }
@@ -63,9 +67,12 @@ public class HTTPCommunicator {
     }
     private void throwIfNotSuccessful(HttpURLConnection http) throws IOException, ResponseException {
         var status = http.getResponseCode();
-        var message = http.getResponseMessage();
         if(!isSuccessful(status)) {
-            throw new ResponseException(status, "Error: Something went wrong with the server. " + status + " " + message);
+            try(InputStream respError = http.getErrorStream()){
+                InputStreamReader reader = new InputStreamReader(respError);
+                var message = new Gson().fromJson(reader, ErrorMessage.class).getMessage();
+                throw new ResponseException(status, message);
+            }
         }
     }
     private boolean isSuccessful(int statusCode) {

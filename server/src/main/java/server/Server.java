@@ -122,19 +122,19 @@ public class Server {
         switch (dae.getMessage()) {
             case "Bad Request!" -> {
                 res.status(400);
-                return "{ \"message\": \"Error: bad request\" }";
+                return new Gson().toJson(new ErrorMessage("Error: bad request"));
             }
             case "Unauthorized!" -> {
                 res.status(401);
-                return "{ \"message\": \"Error: unauthorized\" }";
+                return new Gson().toJson(new ErrorMessage("Error: unauthorized"));
             }
             case "Already Taken!" -> {
                 res.status(403);
-                return "{ \"message\": \"Error: already taken\" }";
+                return new Gson().toJson(new ErrorMessage("Error: already taken"));
             }
             default -> {
                 res.status(500);
-                return "{ \"message\": \"Error: description\" }";
+                return new Gson().toJson(new ErrorMessage("Error: description"));
             }
         }
     }

@@ -53,11 +53,15 @@ public class ServerFacade {
     public Game join(Join join, String authToken) throws ResponseException {
         var path = "/game";
         conn.addRequestHeader(authToken);
-        Game game = null;
+        Game game = conn.makeRequest("PUT", path, join, Game.class);
+        if (ws != null) {
+            wsJoin(join, authToken);
+        }
+        /*
         try {
             game = conn.makeRequest("PUT", path, join, Game.class);
         }catch(ResponseException re){
-            if(!Objects.equals(re.getMessage(), "Error: Something went wrong with the server. 403 Forbidden")){
+            if(re.getStatusCode()!=403){
                 throw new ResponseException(re.getStatusCode(), re.getMessage());
             }
         }finally{
@@ -65,6 +69,7 @@ public class ServerFacade {
                 wsJoin(join, authToken);
             }
         }
+        */
         return game;
     }
 

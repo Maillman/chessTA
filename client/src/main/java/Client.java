@@ -428,7 +428,7 @@ public class Client implements ServerMessageObserver {
                 "Help: List possible commands.",
                 "Redraw: Redraws the chess board.",
                 "Leave: Leave the current game.",
-                "Move <CHESSMOVE>: Make a move in the current game, moving a piece from starting position to ending position (E.G.: 'Move e4e6'",
+                "Move <CHESSMOVE>: Make a move in the current game, moving a piece from starting position to ending position (E.G.: 'Move e4e6')",
                 "Resign: Forfeit the game (The game will immediately end!).",
                 "Highlight <CHESSPOSITION>: Highlights all the legal moves of the chess piece at the chosen chess position.",
                 "Quit: Exit the program."
