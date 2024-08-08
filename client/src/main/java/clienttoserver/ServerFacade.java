@@ -57,19 +57,6 @@ public class ServerFacade {
         if (ws != null) {
             wsJoin(join, authToken);
         }
-        /*
-        try {
-            game = conn.makeRequest("PUT", path, join, Game.class);
-        }catch(ResponseException re){
-            if(re.getStatusCode()!=403){
-                throw new ResponseException(re.getStatusCode(), re.getMessage());
-            }
-        }finally{
-            if (ws != null) {
-                wsJoin(join, authToken);
-            }
-        }
-        */
         return game;
     }
 
