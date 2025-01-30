@@ -111,11 +111,11 @@ public class ChessPiece {
                 //Start with the top L's
                 knightL("Up",board,myPosition,pieceMoves);
                 //Now with the bottom L's
-                knightL("Down",board,myPosition,pieceMoves);
+                //knightL("Down",board,myPosition,pieceMoves);
                 //Now with the left L's
-                knightL("Left",board,myPosition,pieceMoves);
+                //knightL("Left",board,myPosition,pieceMoves);
                 //Now with the right L's
-                knightL("Right",board,myPosition,pieceMoves);
+                //knightL("Right",board,myPosition,pieceMoves);
             }
             case PAWN -> pawn(board,myPosition,pieceMoves);
             case KING -> king(board,myPosition,pieceMoves);
@@ -156,7 +156,9 @@ public class ChessPiece {
         int startRow = (piece.getTeamColor() == ChessGame.TeamColor.WHITE) ? 2 : 7;
         int endRow = (piece.getTeamColor() == ChessGame.TeamColor.WHITE) ? 8 : 1;
         ChessPosition newPos;
-
+        if(myPosition.getRow()==endRow){
+            return;
+        }
         pawnMoveForward(board,curPos,myPosition,pieceMoves,forwardDirection,endRow);
         //Start pawn moves forward twice
         if(myPosition.getRow()==startRow&&board.getPiece(new ChessPosition(curPos[0],curPos[1]))==null){
