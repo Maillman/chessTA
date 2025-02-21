@@ -22,7 +22,7 @@ jobs:
         run: echo $(find client server shared -type d -name java | paste -sd ":")
 
       - name: Generate Javadocs
-        run: timeout 300 javadoc -d docs -sourcepath "client/src/main/java:server/src/main/java:shared/src/main/java" -subpackages .
+        run: timeout 300 javadoc -d docs -sourcepath "client/src/main/java:server/src/main/java:shared/src/main/java" -subpackages chess:clienttoserver:dataaccess:model:server.websocket:server:service:ui:websocket.commands:websocket.messages
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
