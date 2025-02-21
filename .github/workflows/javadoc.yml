@@ -18,8 +18,11 @@ jobs:
           distribution: 'temurin'
           java-version: '17' # Update to your Java version
 
+      - name: Debug Sourcepath
+        run: echo $(find client server shared -type d -name java | paste -sd ":")
+
       - name: Generate Javadocs
-        run: javadoc -d docs -sourcepath "$(find . -name java -type d | paste -sd ":")" -subpackages .
+        run: timeout 300 javadoc -d docs -sourcepath "$(find client server shared -name java -type d | paste -sd ":")" -subpackages .
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
