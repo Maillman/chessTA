@@ -18,11 +18,11 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Build Project
-        run: mvn clean compile
+      - name: Generate Maven Classpath
+        run: mvn dependency:build-classpath -Dmdep.outputFile=classpath.txt
 
       - name: Generate Javadocs
-        run: timeout 300 javadoc -d docs -sourcepath "client/src/main/java:server/src/main/java:shared/src/main/java" -subpackages chess:clienttoserver:dataaccess:model:server.websocket:server:service:ui:websocket.commands:websocket.messages -classpath "$(mvn -q dependency:build-classpath -Dmdep.outputFile=/dev/stdout)"
+        run: timeout 300 javadoc -d docs -sourcepath "client/src/main/java:server/src/main/java:shared/src/main/java" -subpackages chess:clienttoserver:dataaccess:model:server.websocket:server:service:ui:websocket.commands:websocket.messages -classpath "$(cat classpath.txt)"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
