@@ -1,0 +1,29 @@
+name: Generate Javadocs
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17' # Update to your Java version
+
+      - name: Generate Javadocs
+        run: javadoc -d docs \
+             -sourcepath $(find . -name java -type d | paste -sd ":") \
+             -subpackages .
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          publish_dir: docs
