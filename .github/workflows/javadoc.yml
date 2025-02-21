@@ -18,6 +18,9 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
+      - name: Build Project
+        run: mvn clean install
+
       - name: Generate Maven Classpath
         run: mvn dependency:build-classpath -Dmdep.outputFile=classpath.txt
 
