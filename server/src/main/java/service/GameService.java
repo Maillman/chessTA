@@ -55,6 +55,7 @@ public class GameService {
                     throw new DataAccessException("Already Taken!");
                 }
             }
+            default -> throw new DataAccessException("Bad Request!");
         }
         return gameDAO.updateGame(auth.getUsername(), foundGame.getGameID(), join.getPlayerColor(), foundGame);
     }
