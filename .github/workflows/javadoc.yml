@@ -16,13 +16,13 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '17' # Update to your Java version
+          java-version: '21'
 
-      - name: Debug Sourcepath
-        run: echo $(find client server shared -type d -name java | paste -sd ":")
+      - name: Build Project
+        run: mvn clean compile
 
       - name: Generate Javadocs
-        run: timeout 300 javadoc -d docs -sourcepath "client/src/main/java:server/src/main/java:shared/src/main/java" -subpackages chess:clienttoserver:dataaccess:model:server.websocket:server:service:ui:websocket.commands:websocket.messages
+        run: timeout 300 javadoc -d docs -sourcepath "client/src/main/java:server/src/main/java:shared/src/main/java" -subpackages chess:clienttoserver:dataaccess:model:server.websocket:server:service:ui:websocket.commands:websocket.messages -classpath "$(mvn -q dependency:build-classpath -Dmdep.outputFile=/dev/stdout)"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
