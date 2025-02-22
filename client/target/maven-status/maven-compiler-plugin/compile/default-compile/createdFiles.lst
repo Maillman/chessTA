@@ -1,0 +1,12 @@
+Main.class
+Client.class
+clienttoserver\ServerMessageObserver.class
+ui\ChessBoardUI.class
+clienttoserver\WebSocketCommunicator$1.class
+ui\ChessBoardUI$1.class
+ui\ChessBoardUI$Perspective.class
+ui\EscapeSequences.class
+clienttoserver\HTTPCommunicator.class
+clienttoserver\ResponseException.class
+clienttoserver\WebSocketCommunicator.class
+clienttoserver\ServerFacade.class

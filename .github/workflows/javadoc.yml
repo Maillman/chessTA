@@ -18,14 +18,11 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Build Project
-        run: mvn clean install -DskipTests
-
-      - name: Generate Javadocs
-        run: mvn javadoc:javadoc
+      - name: Build Project and Generate Javadocs
+        run: mvn clean package javadoc:aggregate -DskipTests
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GH_TOKEN }}
-          publish_dir: .
+          publish_dir: target/site/apidocs

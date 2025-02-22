@@ -1,24 +1,22 @@
--J-Duser.language=
--J-Duser.country=
 @options
 @packages
 @argfile
--classpath
-'C:/Users/awsom/.m2/repository/edu/byu/cs240/shared/1.0.0/shared-1.0.0.jar;C:/Users/awsom/.m2/repository/mysql/mysql-connector-java/8.0.30/mysql-connector-java-8.0.30.jar;C:/Users/awsom/.m2/repository/com/google/protobuf/protobuf-java/3.19.4/protobuf-java-3.19.4.jar;C:/Users/awsom/.m2/repository/org/slf4j/slf4j-simple/1.7.36/slf4j-simple-1.7.36.jar;C:/Users/awsom/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar;C:/Users/awsom/.m2/repository/com/sparkjava/spark-core/2.9.3/spark-core-2.9.3.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/jetty-server/9.4.31.v20200723/jetty-server-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/jetty-http/9.4.31.v20200723/jetty-http-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/jetty-util/9.4.31.v20200723/jetty-util-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/jetty-io/9.4.31.v20200723/jetty-io-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/jetty-webapp/9.4.31.v20200723/jetty-webapp-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/jetty-xml/9.4.31.v20200723/jetty-xml-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/jetty-servlet/9.4.31.v20200723/jetty-servlet-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/jetty-security/9.4.31.v20200723/jetty-security-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/websocket/websocket-server/9.4.31.v20200723/websocket-server-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/websocket/websocket-common/9.4.31.v20200723/websocket-common-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/websocket/websocket-client/9.4.31.v20200723/websocket-client-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/jetty-client/9.4.31.v20200723/jetty-client-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/websocket/websocket-servlet/9.4.31.v20200723/websocket-servlet-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/websocket/websocket-api/9.4.31.v20200723/websocket-api-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/org/mindrot/jbcrypt/0.4/jbcrypt-0.4.jar;C:/Users/awsom/Documents/CS240/chessTA/server/lib/passoff-dependencies.jar;C:/Users/awsom/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar;C:/Users/awsom/.m2/repository/org/junit/jupiter/junit-jupiter/5.9.2/junit-jupiter-5.9.2.jar;C:/Users/awsom/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar;C:/Users/awsom/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar;C:/Users/awsom/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar;C:/Users/awsom/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar;C:/Users/awsom/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.2/junit-jupiter-params-5.9.2.jar'
+--class-path
+'C:/Users/awsom/Documents/CS240/chessTA/server/target/server.jar;C:/Users/awsom/Documents/CS240/chessTA/shared/target/shared.jar;C:/Users/awsom/.m2/repository/mysql/mysql-connector-java/8.0.30/mysql-connector-java-8.0.30.jar;C:/Users/awsom/.m2/repository/com/google/protobuf/protobuf-java/3.19.4/protobuf-java-3.19.4.jar;C:/Users/awsom/.m2/repository/org/slf4j/slf4j-simple/1.7.36/slf4j-simple-1.7.36.jar;C:/Users/awsom/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar;C:/Users/awsom/.m2/repository/com/sparkjava/spark-core/2.9.3/spark-core-2.9.3.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/jetty-server/9.4.31.v20200723/jetty-server-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/jetty-http/9.4.31.v20200723/jetty-http-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/jetty-util/9.4.31.v20200723/jetty-util-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/jetty-io/9.4.31.v20200723/jetty-io-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/jetty-webapp/9.4.31.v20200723/jetty-webapp-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/jetty-xml/9.4.31.v20200723/jetty-xml-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/jetty-servlet/9.4.31.v20200723/jetty-servlet-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/jetty-security/9.4.31.v20200723/jetty-security-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/websocket/websocket-server/9.4.31.v20200723/websocket-server-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/websocket/websocket-common/9.4.31.v20200723/websocket-common-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/websocket/websocket-client/9.4.31.v20200723/websocket-client-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/jetty-client/9.4.31.v20200723/jetty-client-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/websocket/websocket-servlet/9.4.31.v20200723/websocket-servlet-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/org/eclipse/jetty/websocket/websocket-api/9.4.31.v20200723/websocket-api-9.4.31.v20200723.jar;C:/Users/awsom/.m2/repository/org/mindrot/jbcrypt/0.4/jbcrypt-0.4.jar;C:/Users/awsom/Documents/CS240/chessTA/server/lib/passoff-dependencies.jar;C:/Users/awsom/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar;C:/Users/awsom/.m2/repository/org/junit/jupiter/junit-jupiter/5.9.2/junit-jupiter-5.9.2.jar;C:/Users/awsom/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar;C:/Users/awsom/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar;C:/Users/awsom/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar;C:/Users/awsom/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar;C:/Users/awsom/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.2/junit-jupiter-params-5.9.2.jar;C:/Users/awsom/Documents/CS240/chessTA/server/target/server.jar'
 -encoding
 'UTF-8'
 -protected
 -source
 '21'
 -sourcepath
-'C:/Users/awsom/Documents/CS240/chessTA/server/src/main/java'
+'C:/Users/awsom/Documents/CS240/chessTA/server/src/main/java;C:/Users/awsom/Documents/CS240/chessTA/server/target/generated-sources/annotations'
 -author
 -bottom
 'Copyright &#169; 2025. All rights reserved.'
 -charset
 'UTF-8'
 -d
-'C:/Users/awsom/Documents/CS240/chessTA/server/target/reports/apidocs'
+'C:/Users/awsom/Documents/CS240/chessTA/server/target/site/apidocs'
 -docencoding
 'UTF-8'
 -doctitle
@@ -32,60 +30,31 @@ server
 server.websocket
 service
 'C:/Users/awsom/Documents/CS240/chessTA/server/src/main/java/Main.java'
-C:\Users\awsom\.m2\repository\edu\byu\cs240\shared\1.0.0\shared-1.0.0.jar = 1740188197317
-C:\Users\awsom\.m2\repository\mysql\mysql-connector-java\8.0.30\mysql-connector-java-8.0.30.jar = 1709416125947
-C:\Users\awsom\.m2\repository\com\google\protobuf\protobuf-java\3.19.4\protobuf-java-3.19.4.jar = 1709416125881
-C:\Users\awsom\.m2\repository\org\slf4j\slf4j-simple\1.7.36\slf4j-simple-1.7.36.jar = 1708391733291
-C:\Users\awsom\.m2\repository\org\slf4j\slf4j-api\1.7.36\slf4j-api-1.7.36.jar = 1708391733360
-C:\Users\awsom\.m2\repository\com\sparkjava\spark-core\2.9.3\spark-core-2.9.3.jar = 1740187700917
-C:\Users\awsom\.m2\repository\org\eclipse\jetty\jetty-server\9.4.31.v20200723\jetty-server-9.4.31.v20200723.jar = 1740187701211
-C:\Users\awsom\.m2\repository\javax\servlet\javax.servlet-api\3.1.0\javax.servlet-api-3.1.0.jar = 1740187700650
-C:\Users\awsom\.m2\repository\org\eclipse\jetty\jetty-http\9.4.31.v20200723\jetty-http-9.4.31.v20200723.jar = 1740187700643
-C:\Users\awsom\.m2\repository\org\eclipse\jetty\jetty-util\9.4.31.v20200723\jetty-util-9.4.31.v20200723.jar = 1740187700757
-C:\Users\awsom\.m2\repository\org\eclipse\jetty\jetty-io\9.4.31.v20200723\jetty-io-9.4.31.v20200723.jar = 1740187700739
-C:\Users\awsom\.m2\repository\org\eclipse\jetty\jetty-webapp\9.4.31.v20200723\jetty-webapp-9.4.31.v20200723.jar = 1740187700759
-C:\Users\awsom\.m2\repository\org\eclipse\jetty\jetty-xml\9.4.31.v20200723\jetty-xml-9.4.31.v20200723.jar = 1740187700826
-C:\Users\awsom\.m2\repository\org\eclipse\jetty\jetty-servlet\9.4.31.v20200723\jetty-servlet-9.4.31.v20200723.jar = 1740187700831
-C:\Users\awsom\.m2\repository\org\eclipse\jetty\jetty-security\9.4.31.v20200723\jetty-security-9.4.31.v20200723.jar = 1740187700873
-C:\Users\awsom\.m2\repository\org\eclipse\jetty\websocket\websocket-server\9.4.31.v20200723\websocket-server-9.4.31.v20200723.jar = 1740187700904
-C:\Users\awsom\.m2\repository\org\eclipse\jetty\websocket\websocket-common\9.4.31.v20200723\websocket-common-9.4.31.v20200723.jar = 1740187700924
-C:\Users\awsom\.m2\repository\org\eclipse\jetty\websocket\websocket-client\9.4.31.v20200723\websocket-client-9.4.31.v20200723.jar = 1740187700942
-C:\Users\awsom\.m2\repository\org\eclipse\jetty\jetty-client\9.4.31.v20200723\jetty-client-9.4.31.v20200723.jar = 1740187701013
-C:\Users\awsom\.m2\repository\org\eclipse\jetty\websocket\websocket-servlet\9.4.31.v20200723\websocket-servlet-9.4.31.v20200723.jar = 1740187701003
-C:\Users\awsom\.m2\repository\org\eclipse\jetty\websocket\websocket-api\9.4.31.v20200723\websocket-api-9.4.31.v20200723.jar = 1740187700982
-C:\Users\awsom\.m2\repository\org\mindrot\jbcrypt\0.4\jbcrypt-0.4.jar = 1714683359354
-C:\Users\awsom\Documents\CS240\chessTA\server\lib\passoff-dependencies.jar = 1740190756369
-C:\Users\awsom\.m2\repository\com\google\code\gson\gson\2.10.1\gson-2.10.1.jar = 1705186922096
-C:\Users\awsom\.m2\repository\org\junit\jupiter\junit-jupiter\5.9.2\junit-jupiter-5.9.2.jar = 1705186922455
-C:\Users\awsom\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.2\junit-jupiter-api-5.9.2.jar = 1705186922564
-C:\Users\awsom\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar = 1705186922500
-C:\Users\awsom\.m2\repository\org\junit\platform\junit-platform-commons\1.9.2\junit-platform-commons-1.9.2.jar = 1705186922552
-C:\Users\awsom\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar = 1705186922512
-C:\Users\awsom\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.9.2\junit-jupiter-params-5.9.2.jar = 1705186922616
 C:\Users\awsom\Documents\CS240\chessTA\server\src\main\java\Main.java = 1740190756370
 C:\Users\awsom\Documents\CS240\chessTA\server\src\main\java = 1740190756376
-C:\Users\awsom\Documents\CS240\chessTA\server\target\reports\apidocs\allclasses-index.html = 1740190874676
-C:\Users\awsom\Documents\CS240\chessTA\server\target\reports\apidocs\allpackages-index.html = 1740190874679
-C:\Users\awsom\Documents\CS240\chessTA\server\target\reports\apidocs\copy.svg = 1740190874719
-C:\Users\awsom\Documents\CS240\chessTA\server\target\reports\apidocs\element-list = 1740190874478
-C:\Users\awsom\Documents\CS240\chessTA\server\target\reports\apidocs\help-doc.html = 1740190874713
-C:\Users\awsom\Documents\CS240\chessTA\server\target\reports\apidocs\index-all.html = 1740190874702
-C:\Users\awsom\Documents\CS240\chessTA\server\target\reports\apidocs\index.html = 1740190874655
-C:\Users\awsom\Documents\CS240\chessTA\server\target\reports\apidocs\link.svg = 1740190874721
-C:\Users\awsom\Documents\CS240\chessTA\server\target\reports\apidocs\Main.html = 1740190874365
-C:\Users\awsom\Documents\CS240\chessTA\server\target\reports\apidocs\member-search-index.js = 1740190874686
-C:\Users\awsom\Documents\CS240\chessTA\server\target\reports\apidocs\module-search-index.js = 1740190874681
-C:\Users\awsom\Documents\CS240\chessTA\server\target\reports\apidocs\overview-summary.html = 1740190874708
-C:\Users\awsom\Documents\CS240\chessTA\server\target\reports\apidocs\overview-tree.html = 1740190874651
-C:\Users\awsom\Documents\CS240\chessTA\server\target\reports\apidocs\package-search-index.js = 1740190874682
-C:\Users\awsom\Documents\CS240\chessTA\server\target\reports\apidocs\package-summary.html = 1740190874485
-C:\Users\awsom\Documents\CS240\chessTA\server\target\reports\apidocs\package-tree.html = 1740190874489
-C:\Users\awsom\Documents\CS240\chessTA\server\target\reports\apidocs\package-use.html = 1740190874631
-C:\Users\awsom\Documents\CS240\chessTA\server\target\reports\apidocs\script.js = 1740190874718
-C:\Users\awsom\Documents\CS240\chessTA\server\target\reports\apidocs\search-page.js = 1740190874726
-C:\Users\awsom\Documents\CS240\chessTA\server\target\reports\apidocs\search.html = 1740190874705
-C:\Users\awsom\Documents\CS240\chessTA\server\target\reports\apidocs\search.js = 1740190874724
-C:\Users\awsom\Documents\CS240\chessTA\server\target\reports\apidocs\serialized-form.html = 1740190874533
-C:\Users\awsom\Documents\CS240\chessTA\server\target\reports\apidocs\stylesheet.css = 1740190874716
-C:\Users\awsom\Documents\CS240\chessTA\server\target\reports\apidocs\tag-search-index.js = 1740190874687
-C:\Users\awsom\Documents\CS240\chessTA\server\target\reports\apidocs\type-search-index.js = 1740190874684
+C:\Users\awsom\Documents\CS240\chessTA\server\target\generated-sources\annotations = 1740193984134
+C:\Users\awsom\Documents\CS240\chessTA\server\target\site\apidocs\allclasses-index.html = 1740193986112
+C:\Users\awsom\Documents\CS240\chessTA\server\target\site\apidocs\allpackages-index.html = 1740193986116
+C:\Users\awsom\Documents\CS240\chessTA\server\target\site\apidocs\copy.svg = 1740193986162
+C:\Users\awsom\Documents\CS240\chessTA\server\target\site\apidocs\element-list = 1740193985922
+C:\Users\awsom\Documents\CS240\chessTA\server\target\site\apidocs\help-doc.html = 1740193986154
+C:\Users\awsom\Documents\CS240\chessTA\server\target\site\apidocs\index-all.html = 1740193986142
+C:\Users\awsom\Documents\CS240\chessTA\server\target\site\apidocs\index.html = 1740193986091
+C:\Users\awsom\Documents\CS240\chessTA\server\target\site\apidocs\link.svg = 1740193986164
+C:\Users\awsom\Documents\CS240\chessTA\server\target\site\apidocs\Main.html = 1740193985799
+C:\Users\awsom\Documents\CS240\chessTA\server\target\site\apidocs\member-search-index.js = 1740193986123
+C:\Users\awsom\Documents\CS240\chessTA\server\target\site\apidocs\module-search-index.js = 1740193986117
+C:\Users\awsom\Documents\CS240\chessTA\server\target\site\apidocs\overview-summary.html = 1740193986149
+C:\Users\awsom\Documents\CS240\chessTA\server\target\site\apidocs\overview-tree.html = 1740193986086
+C:\Users\awsom\Documents\CS240\chessTA\server\target\site\apidocs\package-search-index.js = 1740193986119
+C:\Users\awsom\Documents\CS240\chessTA\server\target\site\apidocs\package-summary.html = 1740193985928
+C:\Users\awsom\Documents\CS240\chessTA\server\target\site\apidocs\package-tree.html = 1740193985933
+C:\Users\awsom\Documents\CS240\chessTA\server\target\site\apidocs\package-use.html = 1740193986066
+C:\Users\awsom\Documents\CS240\chessTA\server\target\site\apidocs\script.js = 1740193986160
+C:\Users\awsom\Documents\CS240\chessTA\server\target\site\apidocs\search-page.js = 1740193986170
+C:\Users\awsom\Documents\CS240\chessTA\server\target\site\apidocs\search.html = 1740193986146
+C:\Users\awsom\Documents\CS240\chessTA\server\target\site\apidocs\search.js = 1740193986167
+C:\Users\awsom\Documents\CS240\chessTA\server\target\site\apidocs\serialized-form.html = 1740193985976
+C:\Users\awsom\Documents\CS240\chessTA\server\target\site\apidocs\stylesheet.css = 1740193986158
+C:\Users\awsom\Documents\CS240\chessTA\server\target\site\apidocs\tag-search-index.js = 1740193986125
+C:\Users\awsom\Documents\CS240\chessTA\server\target\site\apidocs\type-search-index.js = 1740193986121

@@ -1,0 +1,17 @@
+service\LoginTest.class
+passoff\server\DatabaseTests$TableAction.class
+service\RegisterTest.class
+passoff\server\WebSocketTests.class
+dataaccess\GameDAOTest.class
+service\ClearTest.class
+dataaccess\UserDAOTest.class
+passoff\server\StandardAPITests.class
+dataaccess\AuthDAOTest.class
+service\BaseTest.class
+service\JoinTest.class
+passoff\server\DatabaseTests.class
+passoff\server\TestFactory.class
+passoff\server\WebSocketTests$1.class
+passoff\server\WebSocketTests$WebsocketUser.class
+service\LogoutTest.class
+service\CreateListTest.class
