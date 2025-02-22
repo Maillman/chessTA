@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"dataaccess"},{"l":"server"},{"l":"server.websocket"},{"l":"service"}];updateSearchResults();

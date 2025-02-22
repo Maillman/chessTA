@@ -1,9 +1,0 @@
-/home/runner/work/chessTA/chessTA/client/src/main/java/Client.java
-/home/runner/work/chessTA/chessTA/client/src/main/java/Main.java
-/home/runner/work/chessTA/chessTA/client/src/main/java/clienttoserver/HTTPCommunicator.java
-/home/runner/work/chessTA/chessTA/client/src/main/java/clienttoserver/ResponseException.java
-/home/runner/work/chessTA/chessTA/client/src/main/java/clienttoserver/ServerFacade.java
-/home/runner/work/chessTA/chessTA/client/src/main/java/clienttoserver/ServerMessageObserver.java
-/home/runner/work/chessTA/chessTA/client/src/main/java/clienttoserver/WebSocketCommunicator.java
-/home/runner/work/chessTA/chessTA/client/src/main/java/ui/ChessBoardUI.java
-/home/runner/work/chessTA/chessTA/client/src/main/java/ui/EscapeSequences.java
