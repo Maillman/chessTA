@@ -25,7 +25,7 @@ jobs:
         run: mvn dependency:build-classpath -Dmdep.outputFile=classpath.txt
 
       - name: Generate Javadocs
-        run: timeout 300 javadoc -d docs -sourcepath "client/src/main/java:server/src/main/java:shared/src/main/java" -subpackages chess:clienttoserver:dataaccess:model:server.websocket:server:service:ui:websocket.commands:websocket.messages -classpath "$(cat classpath.txt)"
+        run: mvn javadoc:javadoc
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
