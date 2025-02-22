@@ -1,0 +1,16 @@
+/home/runner/work/chessTA/chessTA/shared/src/test/java/passoff/chess/ChessBoardTests.java
+/home/runner/work/chessTA/chessTA/shared/src/test/java/passoff/chess/ChessMoveTests.java
+/home/runner/work/chessTA/chessTA/shared/src/test/java/passoff/chess/ChessPositionTests.java
+/home/runner/work/chessTA/chessTA/shared/src/test/java/passoff/chess/TestUtilities.java
+/home/runner/work/chessTA/chessTA/shared/src/test/java/passoff/chess/extracredit/CastlingTests.java
+/home/runner/work/chessTA/chessTA/shared/src/test/java/passoff/chess/extracredit/EnPassantTests.java
+/home/runner/work/chessTA/chessTA/shared/src/test/java/passoff/chess/game/FullGameTest.java
+/home/runner/work/chessTA/chessTA/shared/src/test/java/passoff/chess/game/GameStatusTests.java
+/home/runner/work/chessTA/chessTA/shared/src/test/java/passoff/chess/game/MakeMoveTests.java
+/home/runner/work/chessTA/chessTA/shared/src/test/java/passoff/chess/game/ValidMovesTests.java
+/home/runner/work/chessTA/chessTA/shared/src/test/java/passoff/chess/piece/BishopMoveTests.java
+/home/runner/work/chessTA/chessTA/shared/src/test/java/passoff/chess/piece/KingMoveTests.java
+/home/runner/work/chessTA/chessTA/shared/src/test/java/passoff/chess/piece/KnightMoveTests.java
+/home/runner/work/chessTA/chessTA/shared/src/test/java/passoff/chess/piece/PawnMoveTests.java
+/home/runner/work/chessTA/chessTA/shared/src/test/java/passoff/chess/piece/QueenMoveTests.java
+/home/runner/work/chessTA/chessTA/shared/src/test/java/passoff/chess/piece/RookMoveTests.java
