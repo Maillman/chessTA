@@ -21,9 +21,6 @@ jobs:
       - name: Build Project
         run: mvn clean install -DskipTests
 
-      - name: Generate Maven Classpath
-        run: mvn dependency:build-classpath -Dmdep.outputFile=classpath.txt
-
       - name: Generate Javadocs
         run: mvn javadoc:javadoc
 
@@ -31,4 +28,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GH_TOKEN }}
-          publish_dir: ./target/reports/apidocs
+          publish_dir: .
