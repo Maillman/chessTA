@@ -1,0 +1,73 @@
+-J-Duser.language=
+-J-Duser.country=
+@options
+@packages
+@argfile
+-classpath
+'C:/Users/awsom/.m2/repository/edu/byu/cs240/shared/1.0.0/shared-1.0.0.jar;C:/Users/awsom/Documents/CS240/chessTA/server/lib/passoff-dependencies.jar;C:/Users/awsom/.m2/repository/org/glassfish/tyrus/bundles/tyrus-standalone-client/1.15/tyrus-standalone-client-1.15.jar;C:/Users/awsom/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar;C:/Users/awsom/.m2/repository/org/junit/jupiter/junit-jupiter/5.9.2/junit-jupiter-5.9.2.jar;C:/Users/awsom/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar;C:/Users/awsom/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar;C:/Users/awsom/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar;C:/Users/awsom/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar;C:/Users/awsom/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.2/junit-jupiter-params-5.9.2.jar'
+-encoding
+'UTF-8'
+-protected
+-source
+'21'
+-sourcepath
+'C:/Users/awsom/Documents/CS240/chessTA/client/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2025. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/awsom/Documents/CS240/chessTA/client/target/reports/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'client 1.0.0 API'
+-use
+-version
+-windowtitle
+'client 1.0.0 API'
+clienttoserver
+ui
+'C:/Users/awsom/Documents/CS240/chessTA/client/src/main/java/Client.java'
+'C:/Users/awsom/Documents/CS240/chessTA/client/src/main/java/Main.java'
+C:\Users\awsom\.m2\repository\edu\byu\cs240\shared\1.0.0\shared-1.0.0.jar = 1740188197317
+C:\Users\awsom\Documents\CS240\chessTA\server\lib\passoff-dependencies.jar = 1740190756369
+C:\Users\awsom\.m2\repository\org\glassfish\tyrus\bundles\tyrus-standalone-client\1.15\tyrus-standalone-client-1.15.jar = 1711649203717
+C:\Users\awsom\.m2\repository\com\google\code\gson\gson\2.10.1\gson-2.10.1.jar = 1705186922096
+C:\Users\awsom\.m2\repository\org\junit\jupiter\junit-jupiter\5.9.2\junit-jupiter-5.9.2.jar = 1705186922455
+C:\Users\awsom\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.2\junit-jupiter-api-5.9.2.jar = 1705186922564
+C:\Users\awsom\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar = 1705186922500
+C:\Users\awsom\.m2\repository\org\junit\platform\junit-platform-commons\1.9.2\junit-platform-commons-1.9.2.jar = 1705186922552
+C:\Users\awsom\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar = 1705186922512
+C:\Users\awsom\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.9.2\junit-jupiter-params-5.9.2.jar = 1705186922616
+C:\Users\awsom\Documents\CS240\chessTA\client\src\main\java\Client.java = 1740190756364
+C:\Users\awsom\Documents\CS240\chessTA\client\src\main\java\Main.java = 1740190756364
+C:\Users\awsom\Documents\CS240\chessTA\client\src\main\java = 1740190756366
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\allclasses-index.html = 1740190876183
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\allpackages-index.html = 1740190876186
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\Client.html = 1740190875919
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\constant-values.html = 1740190876093
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\copy.svg = 1740190876226
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\element-list = 1740190876050
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\help-doc.html = 1740190876219
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\index-all.html = 1740190876209
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\index.html = 1740190876168
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\link.svg = 1740190876227
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\Main.html = 1740190876002
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\member-search-index.js = 1740190876192
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\module-search-index.js = 1740190876188
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\overview-summary.html = 1740190876214
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\overview-tree.html = 1740190876164
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\package-search-index.js = 1740190876190
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\package-summary.html = 1740190876057
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\package-tree.html = 1740190876062
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\package-use.html = 1740190876151
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\script.js = 1740190876224
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\search-page.js = 1740190876232
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\search.html = 1740190876212
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\search.js = 1740190876230
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\serialized-form.html = 1740190876103
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\stylesheet.css = 1740190876222
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\tag-search-index.js = 1740190876193
+C:\Users\awsom\Documents\CS240\chessTA\client\target\reports\apidocs\type-search-index.js = 1740190876191
