@@ -19,7 +19,7 @@ jobs:
           java-version: '21'
 
       - name: Build Project
-        run: mvn clean install
+        run: mvn clean install -DskipTests
 
       - name: Generate Maven Classpath
         run: mvn dependency:build-classpath -Dmdep.outputFile=classpath.txt
