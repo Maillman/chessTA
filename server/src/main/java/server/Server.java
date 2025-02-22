@@ -7,6 +7,9 @@ import server.websocket.WebSocketHandler;
 import service.*;
 import spark.*;
 
+/**
+ * The server that handles a chess database.
+ */
 public class Server {
     private final WebSocketHandler webSocketHandler;
     private final UserService userService;
